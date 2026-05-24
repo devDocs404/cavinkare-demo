@@ -56,43 +56,47 @@ export function ImageSlider3D({
 	);
 
 	return (
-		<div
-			className={`grid h-full min-h-[500px] w-full place-items-center overflow-hidden ${containerClassName}`}
-			style={{
-				perspective: perspective,
-				...maskStyles,
-			}}
-		>
-			<motion.div
-				className="pointer-events-auto grid place-self-center"
+		<>
+			<span className="sr-only">Rotating 3D showcase of CavinKare brand logos</span>
+			<div
+				aria-hidden="true"
+				className={`grid h-full min-h-[500px] w-full place-items-center overflow-hidden ${containerClassName}`}
 				style={{
-					transformStyle: "preserve-3d",
-				}}
-				animate={{
-					rotateY: rotationValues,
-				}}
-				transition={{
-					duration: animationDuration,
-					ease: "linear",
-					repeat: Infinity,
+					perspective: perspective,
+					...maskStyles,
 				}}
 			>
-				{items.map((item, i) => (
-					<img
-						key={item.id}
-						src={item.src}
-						alt="Brand showcase"
-						className={`col-start-1 row-start-1 rounded-[1.5em] object-cover ${imageClassName}`}
-						style={{
-							width: cardWidth,
-							aspectRatio: cardAspectRatio,
-							backfaceVisibility: "hidden",
-							WebkitBackfaceVisibility: "hidden",
-							transform: `rotateY(calc(${i} * (1turn / ${n}))) translateZ(calc(-1 * (0.5 * ${cardWidth} + 0.5em) / tan(0.5 * (1turn / ${n}))))`,
-						}}
-					/>
-				))}
-			</motion.div>
-		</div>
+				<motion.div
+					className="pointer-events-auto grid place-self-center"
+					style={{
+						transformStyle: "preserve-3d",
+					}}
+					animate={{
+						rotateY: rotationValues,
+					}}
+					transition={{
+						duration: animationDuration,
+						ease: "linear",
+						repeat: Infinity,
+					}}
+				>
+					{items.map((item, i) => (
+						<img
+							key={item.id}
+							src={item.src}
+							alt=""
+							className={`col-start-1 row-start-1 rounded-[1.5em] object-cover ${imageClassName}`}
+							style={{
+								width: cardWidth,
+								aspectRatio: cardAspectRatio,
+								backfaceVisibility: "hidden",
+								WebkitBackfaceVisibility: "hidden",
+								transform: `rotateY(calc(${i} * (1turn / ${n}))) translateZ(calc(-1 * (0.5 * ${cardWidth} + 0.5em) / tan(0.5 * (1turn / ${n}))))`,
+							}}
+						/>
+					))}
+				</motion.div>
+			</div>
+		</>
 	);
 }
