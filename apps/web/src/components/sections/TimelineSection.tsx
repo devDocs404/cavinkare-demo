@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useState, useEffect } from "react";
+import type { ReactElement } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { MapPin } from "lucide-react";
 
 const timelineData = [
@@ -7,7 +8,7 @@ const timelineData = [
 		id: "1983",
 		year: "1983",
 		title: "CavinKare launches India's first affordable shampoo sachet.",
-		quote: "“Why should affordability stop someone from self-care?”",
+		quote: "\u201CWhy should affordability stop someone from self-care?\u201D",
 		stats: "10 paise. No bottle. No barrier.",
 		image: "/images/timeline-1983.png",
 	},
@@ -15,7 +16,7 @@ const timelineData = [
 		id: "1990s",
 		year: "1990s",
 		title: "Expanding reach and product lines across India.",
-		quote: "“Innovation driven by deep consumer understanding.”",
+		quote: "\u201CInnovation driven by deep consumer understanding.\u201D",
 		stats: "Millions of households reached.",
 		image: "/images/timeline-1983.png",
 	},
@@ -23,38 +24,115 @@ const timelineData = [
 		id: "2000s",
 		year: "2000s",
 		title: "Going global and diversifying into food & beverages.",
-		quote: "“A truly Indian multinational company.”",
+		quote: "\u201CA truly Indian multinational company.\u201D",
 		stats: "Presence in 30+ countries.",
 		image: "/images/timeline-1983.png",
 	},
 ];
 
-export function TimelineSection() {
+export function TimelineSection(): ReactElement {
 	const [activeTab, setActiveTab] = useState(timelineData[0].id);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setActiveTab((current) => {
-				const currentIndex = timelineData.findIndex(
-					(item) => item.id === current,
-				);
-				const nextIndex = (currentIndex + 1) % timelineData.length;
-				return timelineData[nextIndex].id;
-			});
-		}, 5000); // Change slide every 5 seconds
-
-		return () => clearInterval(interval);
-	}, []);
+	const [isPaused, setIsPaused] = useState(false);
+	const tabListRef = useRef<HTMLDivElement>(null);
 
 	const activeIndex = timelineData.findIndex((item) => item.id === activeTab);
 	const activeItem = timelineData[activeIndex];
 
+	const goToTab = useCallback((id: string): void => {
+		setActiveTab(id);
+	}, []);
+
+	const goToNext = useCallback((): void => {
+		setActiveTab((current) => {
+			const currentIndex = timelineData.findIndex(
+				(item) => item.id === current,
+			);
+			const nextIndex = (currentIndex + 1) % timelineData.length;
+			return timelineData[nextIndex].id;
+		});
+	}, []);
+
+	const goToPrev = useCallback((): void => {
+		setActiveTab((current) => {
+			const currentIndex = timelineData.findIndex(
+				(item) => item.id === current,
+			);
+			const prevIndex =
+				(currentIndex - 1 + timelineData.length) % timelineData.length;
+			return timelineData[prevIndex].id;
+		});
+	}, []);
+
+	/* ─── Auto-advance with pause support (WCAG 2.2.2) ─── */
+	useEffect(() => {
+		if (isPaused) {
+			return undefined;
+		}
+
+		const interval = setInterval(goToNext, 5000);
+		return () => clearInterval(interval);
+	}, [isPaused, goToNext]);
+
+	/* ─── Arrow key navigation for tabs (WCAG 2.1.1) ─── */
+	const handleTabKeyDown = useCallback(
+		(event: React.KeyboardEvent<HTMLDivElement>): void => {
+			if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+				event.preventDefault();
+				goToNext();
+				/* Focus the newly active tab button */
+				const nextIndex = (activeIndex + 1) % timelineData.length;
+				const tabButtons =
+					tabListRef.current?.querySelectorAll<HTMLButtonElement>(
+						'[role="tab"]',
+					);
+				tabButtons?.[nextIndex]?.focus();
+			} else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+				event.preventDefault();
+				goToPrev();
+				const prevIndex =
+					(activeIndex - 1 + timelineData.length) % timelineData.length;
+				const tabButtons =
+					tabListRef.current?.querySelectorAll<HTMLButtonElement>(
+						'[role="tab"]',
+					);
+				tabButtons?.[prevIndex]?.focus();
+			} else if (event.key === "Home") {
+				event.preventDefault();
+				goToTab(timelineData[0].id);
+				const tabButtons =
+					tabListRef.current?.querySelectorAll<HTMLButtonElement>(
+						'[role="tab"]',
+					);
+				tabButtons?.[0]?.focus();
+			} else if (event.key === "End") {
+				event.preventDefault();
+				goToTab(timelineData[timelineData.length - 1].id);
+				const tabButtons =
+					tabListRef.current?.querySelectorAll<HTMLButtonElement>(
+						'[role="tab"]',
+					);
+				tabButtons?.[timelineData.length - 1]?.focus();
+			}
+		},
+		[activeIndex, goToNext, goToPrev, goToTab],
+	);
+
 	return (
-		<section className="py-24 bg-white relative overflow-hidden">
+		<section
+			aria-labelledby="timeline-heading"
+			className="py-24 bg-white relative overflow-hidden"
+			onMouseEnter={() => setIsPaused(true)}
+			onMouseLeave={() => setIsPaused(false)}
+			onFocus={() => setIsPaused(true)}
+			onBlur={() => setIsPaused(false)}
+		>
 			<div className="container mx-auto px-4 max-w-6xl">
 				{/* Heading Section */}
 				<div className="text-center max-w-4xl mx-auto mb-20 space-y-4">
-					<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark tracking-tight">
+					<h2
+						id="timeline-heading"
+						className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark tracking-tight"
+					>
 						How One Small Sachet{" "}
 						<span className="text-gradient-brand">Sparked a</span>
 						<br /> Giant{" "}
@@ -66,17 +144,31 @@ export function TimelineSection() {
 					</p>
 				</div>
 
-				{/* Timeline Navigation */}
-				<div className="relative mb-16 flex justify-between items-center max-w-4xl mx-auto px-4">
+				{/* Timeline Navigation — ARIA Tabs Pattern */}
+				<div
+					ref={tabListRef}
+					role="tablist"
+					aria-label="Company timeline"
+					onKeyDown={handleTabKeyDown}
+					className="relative mb-16 flex justify-between items-center max-w-4xl mx-auto px-4"
+				>
 					{/* Background Line */}
-					<div className="absolute top-1/2 left-0 right-0 h-[2px] bg-gray-100 -z-10" />
+					<div
+						aria-hidden="true"
+						className="absolute top-1/2 left-0 right-0 h-[2px] bg-gray-100 -z-10"
+					/>
 
 					{timelineData.map((item) => {
 						const isActive = activeTab === item.id;
 						return (
 							<button
 								key={item.id}
-								onClick={() => setActiveTab(item.id)}
+								role="tab"
+								id={`timeline-tab-${item.id}`}
+								aria-selected={isActive}
+								aria-controls={`timeline-panel-${item.id}`}
+								tabIndex={isActive ? 0 : -1}
+								onClick={() => goToTab(item.id)}
 								type="button"
 								className={`relative px-4 py-2 text-4xl md:text-6xl font-light transition-all duration-300 bg-white ${
 									isActive
@@ -90,8 +182,13 @@ export function TimelineSection() {
 					})}
 				</div>
 
-				{/* Timeline Content */}
-				<div className="max-w-4xl mx-auto">
+				{/* Timeline Content — Tab Panel */}
+				<div
+					id={`timeline-panel-${activeItem.id}`}
+					role="tabpanel"
+					aria-labelledby={`timeline-tab-${activeItem.id}`}
+					className="max-w-4xl mx-auto"
+				>
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={activeItem.id}
@@ -115,14 +212,20 @@ export function TimelineSection() {
 								<div className="flex flex-col h-full">
 									{/* Pin and Year */}
 									<div className="flex items-center gap-2 text-gray-900 relative">
-										<MapPin className="w-5 h-5 fill-red-500 text-white" />
+										<MapPin
+											aria-hidden="true"
+											className="w-5 h-5 fill-red-500 text-white"
+										/>
 										<span className="text-xl font-medium">
 											{activeItem.year}
 										</span>
 									</div>
 
 									{/* Vertical Dotted Line */}
-									<div className="ml-[9px] w-px h-12 my-2 border-l-2 border-dotted border-gray-300" />
+									<div
+										aria-hidden="true"
+										className="ml-[9px] w-px h-12 my-2 border-l-2 border-dotted border-gray-300"
+									/>
 
 									{/* Main Content */}
 									<div className="space-y-4">
