@@ -37,7 +37,7 @@ export function MediaArticlePage(): ReactElement {
 						to="/organisation/media"
 						className="inline-flex items-center gap-2 text-lg font-bold text-[#003876] hover:underline dark:text-blue-400"
 					>
-						<ChevronLeft className="h-5 w-5" />
+						<ChevronLeft className="h-5 w-5" aria-hidden="true" />
 						{article.title}
 					</Link>
 				</div>
@@ -73,8 +73,9 @@ export function MediaArticlePage(): ReactElement {
 											{article.date} | {article.location}
 										</span>
 									</div>
-									<a href={article.link} className="hover:underline">
+									<a href={article.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
 										Read the Full Article at {article.publication}
+										<span className="sr-only"> (opens in new tab)</span>
 									</a>
 								</div>
 							</header>
@@ -101,15 +102,17 @@ export function MediaArticlePage(): ReactElement {
 								<h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
 									Leave your comment
 								</h2>
-								<form className="flex flex-col gap-4">
+								<form className="flex flex-col gap-4" aria-label="Leave a comment">
+									<label htmlFor="article-comment" className="sr-only">Your comment</label>
 									<textarea
+										id="article-comment"
 										rows={4}
 										placeholder="Your comment"
 										className="w-full rounded-lg border border-gray-200 bg-gray-50 p-4 outline-none focus:border-[#003876] focus:ring-1 focus:ring-[#003876] dark:border-slate-700 dark:bg-slate-900/50 dark:text-white"
 									/>
 									<div className="flex justify-end">
 										<button
-											type="button"
+											type="submit"
 											className="rounded-full bg-[#0a1e3f] px-8 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#003876] dark:bg-blue-600 dark:hover:bg-blue-700"
 										>
 											Submit

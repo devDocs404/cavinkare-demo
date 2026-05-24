@@ -53,6 +53,7 @@ function NewsCard({ item }: { item: NewsItem }): ReactElement {
 function WaveTop(): ReactElement {
 	return (
 		<div
+			aria-hidden="true"
 			className="absolute top-0 left-0 z-10 h-[24px] w-full -translate-y-[23px] bg-surface-section dark:bg-slate-900"
 			style={{
 				WebkitMaskImage: `url("data:image/svg+xml,%3Csvg width='48' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 24 L24 0 L48 24 Z' fill='black' /%3E%3C/svg%3E")`,
@@ -69,6 +70,7 @@ function WaveTop(): ReactElement {
 function WaveBottom(): ReactElement {
 	return (
 		<div
+			aria-hidden="true"
 			className="absolute bottom-0 left-0 z-10 h-[24px] w-full translate-y-[23px] bg-surface-section dark:bg-slate-900"
 			style={{
 				WebkitMaskImage: `url("data:image/svg+xml,%3Csvg width='48' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L24 24 L48 0 Z' fill='black' /%3E%3C/svg%3E")`,
@@ -87,11 +89,11 @@ export function InsideCavinKare(): ReactElement {
 		<div id="inside-cavinkare" className="relative w-full">
 			<WaveTop />
 
-			<section className="relative w-full bg-surface-section px-6 py-24 md:px-12 dark:bg-slate-900">
+			<section aria-labelledby="inside-cavinkare-heading" className="relative w-full bg-surface-section px-6 py-24 md:px-12 dark:bg-slate-900">
 				<div className="relative z-10 mx-auto max-w-7xl">
 					{/* HEADER */}
 					<div className="mx-auto mb-8 max-w-4xl text-center md:mb-10">
-						<h2 className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
+						<h2 id="inside-cavinkare-heading" className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
 							Inside <span className="text-gradient-brand">CavinKare</span>
 						</h2>
 

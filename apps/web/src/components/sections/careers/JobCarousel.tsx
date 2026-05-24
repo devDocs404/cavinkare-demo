@@ -25,6 +25,8 @@ export function JobCarousel(): ReactElement {
 				}}
 				grabCursor={true}
 				className="py-12 lg:pl-2!"
+				aria-roledescription="carousel"
+				aria-label="Job openings"
 				onReachEnd={(swiper: SwiperType) => {
 					if (swiper.autoplay) {
 						// Reverse direction cleanly
@@ -67,6 +69,8 @@ export function JobCarousel(): ReactElement {
 					return (
 						<SwiperSlide
 							key={card.id}
+							aria-roledescription="slide"
+							aria-label={`${index + 1} of ${JOB_CARDS.length}`}
 							className="group h-auto! w-[85vw]! md:w-[600px]! lg:w-[680px]! xl:w-[760px]!"
 						>
 							<JobCard card={card} isActive={isActive} />

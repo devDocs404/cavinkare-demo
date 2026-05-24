@@ -18,19 +18,19 @@ export function RndHero(): ReactElement {
 					</p>
 
 					{/* Breadcrumb */}
-					<nav className="mb-12 flex items-center justify-center gap-2 text-[11px] font-bold tracking-wide text-gray-400 uppercase dark:text-gray-500">
+					<nav aria-label="Breadcrumb" className="mb-12 flex items-center justify-center gap-2 text-[11px] font-bold tracking-wide text-gray-400 uppercase dark:text-gray-500">
 						<Link
 							to="/"
 							className="hover:text-brand-blue-dark dark:hover:text-blue-400 transition-colors"
 						>
 							Home
 						</Link>
-						<ChevronRight className="h-3 w-3" />
+						<ChevronRight className="h-3 w-3" aria-hidden="true" />
 						<span className="hover:text-brand-blue-dark dark:hover:text-blue-400 transition-colors cursor-pointer">
 							Organisation
 						</span>
-						<ChevronRight className="h-3 w-3" />
-						<span className="text-[#0033a0] dark:text-blue-400">
+						<ChevronRight className="h-3 w-3" aria-hidden="true" />
+						<span aria-current="page" className="text-[#0033a0] dark:text-blue-400">
 							Research & Development
 						</span>
 					</nav>

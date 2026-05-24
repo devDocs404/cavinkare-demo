@@ -108,6 +108,7 @@ export function JobCard({ card, isActive }: JobCardProps): ReactElement {
 					<div className="flex justify-start sm:justify-end">
 						<button
 							type="button"
+							aria-label={`Apply for ${card.title}`}
 							className={`group relative overflow-hidden rounded-full border px-8 py-3.5 text-base font-medium backdrop-blur-md transition-colors duration-700 ${
 								isActive
 									? "border-white/40 bg-white/5 text-white hover:bg-white hover:text-[#0a2d82]"

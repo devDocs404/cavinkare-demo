@@ -38,7 +38,7 @@ export function PurposeSection(): ReactElement {
 				</div>
 			</div>
 
-			<div className="relative w-full px-0 pb-16">
+			<div className="relative w-full px-0 pb-16" aria-roledescription="carousel" aria-label="Company purpose initiatives">
 				<Swiper
 					grabCursor={true}
 					centeredSlides={true}
@@ -65,6 +65,8 @@ export function PurposeSection(): ReactElement {
 						return (
 							<SwiperSlide
 								key={slide.id}
+								aria-roledescription="slide"
+								aria-label={`${index + 1} of ${PURPOSE_SLIDES.length}`}
 								onClick={() => swiperInstance?.slideTo(index)}
 								style={{ width: "460px", height: "500px" }}
 								className={`relative flex shrink-0 cursor-pointer overflow-hidden rounded-3xl opacity-100 transition-all duration-300 ${
@@ -109,7 +111,14 @@ export function PurposeSection(): ReactElement {
 				{/* Custom Pagination */}
 				<div className="mt-12 flex w-full items-center justify-end gap-4 md:w-[80%]">
 					<div className="flex items-center justify-between gap-4">
-						<div className="relative mt-1 h-2 w-24 overflow-hidden rounded-full bg-gray-200 md:w-32 dark:bg-gray-800">
+						<div
+							role="progressbar"
+							aria-valuenow={Math.round((activeIndex / (PURPOSE_SLIDES.length - 1)) * 100) || 0}
+							aria-valuemin={0}
+							aria-valuemax={100}
+							aria-label="Carousel progress"
+							className="relative mt-1 h-2 w-24 overflow-hidden rounded-full bg-gray-200 md:w-32 dark:bg-gray-800"
+						>
 							<div
 								className="absolute top-0 left-0 h-full rounded-full bg-brand-red transition-transform duration-300 ease-out"
 								style={{

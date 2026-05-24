@@ -6,6 +6,7 @@ export function CareersSection(): ReactElement {
 	return (
 		<section
 			id="careers-section"
+			aria-labelledby="careers-heading"
 			className="relative z-10 -mt-8 overflow-hidden rounded-t-[48px] bg-surface-section-alt py-24 pt-32 lg:rounded-t-[80px] dark:bg-slate-900"
 		>
 			{/* TOP SECTION: Title + Job Carousel */}
@@ -13,7 +14,7 @@ export function CareersSection(): ReactElement {
 				{/* Left Text Block */}
 				<div className="w-full shrink-0 pr-4 md:pr-8 lg:w-[480px] lg:pr-12 xl:w-[500px]">
 					<div className="max-w-5xl">
-						<h2 className="text-3xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl dark:text-white">
+						<h2 id="careers-heading" className="text-3xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl dark:text-white">
 							Grow With a<br /> Company{" "}
 							<span className="text-gradient-brand">That</span>
 							<br />

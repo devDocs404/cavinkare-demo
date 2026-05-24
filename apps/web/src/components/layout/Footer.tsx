@@ -45,14 +45,15 @@ export function Footer(): ReactElement {
 							</p>
 
 							{/* SOCIALS */}
-							<div className="mt-10 flex items-center gap-5">
+							<div className="mt-10 flex items-center gap-5" role="list" aria-label="Social media links">
 								{SOCIAL_LINKS.map((item) => (
 									<a
 										key={item.label}
 										href={item.href}
 										className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/3 text-sm font-medium tracking-wide text-white/65 transition-all duration-300 hover:border-white/20 hover:bg-white/6 hover:text-white"
 									>
-										{item.label}
+										<span aria-hidden="true">{item.label}</span>
+										<span className="sr-only">Follow us on {item.label}</span>
 									</a>
 								))}
 							</div>
@@ -60,7 +61,7 @@ export function Footer(): ReactElement {
 					</div>
 
 					{/* RIGHT GRID */}
-					<div className="grid gap-y-16 pl-10 sm:grid-cols-2 lg:grid-cols-4">
+					<nav aria-label="Footer navigation" className="grid gap-y-16 pl-10 sm:grid-cols-2 lg:grid-cols-4">
 						{FOOTER_LINKS.map((section, index) => (
 							<div
 								key={section.title || `section-${index}`}
@@ -97,7 +98,7 @@ export function Footer(): ReactElement {
 								</ul>
 							</div>
 						))}
-					</div>
+					</nav>
 				</div>
 			</div>
 		</footer>

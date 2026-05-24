@@ -12,7 +12,7 @@ export function MediaPage(): ReactElement {
 			{/* Hero Section */}
 			<section className="relative overflow-hidden bg-[#F4F8FB] pt-16 pb-20 dark:bg-slate-900">
 				{/* Background Grid Pattern (Optional touch for exactness) */}
-				<div className="absolute inset-0 pointer-events-none grid-bg opacity-50 dark:opacity-20" />
+				<div className="absolute inset-0 pointer-events-none grid-bg opacity-50 dark:opacity-20" aria-hidden="true" />
 
 				<div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
 					<div className="grid items-center gap-12 lg:grid-cols-2">
@@ -48,11 +48,17 @@ export function MediaPage(): ReactElement {
 			{/* Main Content Area */}
 			<section className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8 lg:py-16">
 				{/* Tabs */}
-				<div className="mb-10 flex flex-wrap justify-center gap-4 md:gap-8 border-b border-gray-200 dark:border-slate-800 pb-2">
+				<div
+					role="tablist"
+					aria-label="Media categories"
+					className="mb-10 flex flex-wrap justify-center gap-4 md:gap-8 border-b border-gray-200 dark:border-slate-800 pb-2"
+				>
 					{["CavinKare in News", "Press Library", "Press Release"].map(
 						(tab) => (
 							<button
 								key={tab}
+								role="tab"
+								aria-selected={activeTab === tab}
 								onClick={() => setActiveTab(tab)}
 								className={`relative pb-4 text-sm md:text-base font-semibold transition-colors ${
 									activeTab === tab
@@ -120,9 +126,10 @@ export function MediaPage(): ReactElement {
 						<input
 							type="text"
 							placeholder="Search"
+							aria-label="Search articles"
 							className="w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[#003876] focus:ring-1 focus:ring-[#003876] dark:border-slate-700 dark:bg-slate-800 dark:text-gray-100 dark:placeholder-gray-400"
 						/>
-						<Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+						<Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" aria-hidden="true" />
 					</div>
 				</div>
 

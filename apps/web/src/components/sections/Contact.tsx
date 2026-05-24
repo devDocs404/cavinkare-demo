@@ -14,12 +14,13 @@ export function Contact(): ReactElement {
 	return (
 		<section
 			id="contact"
+			aria-labelledby="contact-heading"
 			className="relative overflow-hidden bg-white py-24 dark:bg-slate-950"
 		>
 			<div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-1 lg:items-start">
 				{/* HEADING */}
 				<div>
-					<h2 className="text-5xl font-bold tracking-[-0.04em] text-brand-dark dark:text-white">
+					<h2 id="contact-heading" className="text-5xl font-bold tracking-[-0.04em] text-brand-dark dark:text-white">
 						Chat to our friendly team
 					</h2>
 
@@ -67,7 +68,7 @@ export function Contact(): ReactElement {
 
 					{/* RIGHT SIDE */}
 					<div className="rounded-xl border border-neutral-100 bg-[#f6f8fb] p-7 shadow-[0_20px_60px_rgba(0,0,0,0.04)] dark:border-slate-800 dark:bg-slate-900/50">
-						<form className="space-y-5">
+						<form aria-label="Contact form" className="space-y-5">
 							{/* NAME */}
 							<div className="grid gap-4 sm:grid-cols-2">
 								<div className="space-y-1.5">

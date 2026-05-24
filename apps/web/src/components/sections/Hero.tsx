@@ -6,19 +6,20 @@ import img5 from "../../assets/various_products_1779453032588.png";
 import img4 from "../../assets/yellow_shampoo_1779453014711.png";
 
 const cards = [
-	{ id: "hero-1", img: img1 },
-	{ id: "hero-2", img: img2 },
-	{ id: "hero-3", img: img3 },
-	{ id: "hero-4", img: img4 },
-	{ id: "hero-5", img: img5 },
-	{ id: "hero-6", img: img1 },
-	{ id: "hero-7", img: img2 },
+	{ id: "hero-1", img: img1, alt: "Skincare product model" },
+	{ id: "hero-2", img: img2, alt: "Scientists in laboratory" },
+	{ id: "hero-3", img: img3, alt: "Office professional at work" },
+	{ id: "hero-4", img: img4, alt: "Yellow shampoo product" },
+	{ id: "hero-5", img: img5, alt: "Various CavinKare products" },
+	{ id: "hero-6", img: img1, alt: "Skincare product model" },
+	{ id: "hero-7", img: img2, alt: "Scientists in laboratory" },
 ];
 
 export function Hero(): ReactElement {
 	return (
 		<section
 			id="hero"
+			aria-labelledby="hero-heading"
 			className="relative flex min-h-[calc(100svh-160px)] w-full flex-col items-center justify-center overflow-hidden bg-white px-4 pt-10 dark:bg-slate-950"
 		>
 			{/* Background Glow */}
@@ -57,7 +58,7 @@ export function Hero(): ReactElement {
 							</svg>
 						</div>
 
-						<h1 className="relative z-10 text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-white">
+						<h1 id="hero-heading" className="relative z-10 text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-white">
 							A house of <span className="text-gradient-brand">everyday</span>
 							<br />
 							innovations that{" "}
@@ -66,8 +67,8 @@ export function Hero(): ReactElement {
 					</div>
 				</div>
 
-				{/* GALLERY */}
-				<div className="relative mt-2 flex h-[360px] w-full items-center justify-center perspective-[2400px] md:h-[420px]">
+				{/* GALLERY — decorative visual flair */}
+				<div aria-hidden="true" className="relative mt-2 flex h-[360px] w-full items-center justify-center perspective-[2400px] md:h-[420px]">
 					{cards.map((card, index) => {
 						const center = (cards.length - 1) / 2;
 						const offset = index - center;
@@ -89,7 +90,7 @@ export function Hero(): ReactElement {
 								<div className="overflow-hidden rounded-[30px] shadow-[0_20px_70px_rgba(0,0,0,0.18)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-8 group-hover:scale-[1.15] group-hover:shadow-[0_30px_90px_rgba(0,0,0,0.25)]">
 									<img
 										src={card.img}
-										alt="Everyday innovation showcase"
+										alt={card.alt}
 										loading="lazy"
 										draggable={false}
 										className="h-[220px] w-[150px] object-cover select-none sm:h-[260px] sm:w-[180px] md:h-[320px] md:w-[220px]"

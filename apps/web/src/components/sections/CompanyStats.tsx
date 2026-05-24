@@ -8,6 +8,7 @@ export function CompanyStats(): ReactElement {
 	return (
 		<section
 			id="company-stats"
+			aria-label="Company statistics"
 			className="relative w-full overflow-hidden bg-white px-6 py-24 md:px-12 dark:bg-slate-950"
 		>
 			<div className="mx-auto max-w-7xl">
@@ -29,7 +30,7 @@ export function CompanyStats(): ReactElement {
 								<br />
 								Score
 							</p>
-							<div className="mt-auto flex gap-1 pt-6">
+							<div className="mt-auto flex gap-1 pt-6" aria-hidden="true">
 								{[1, 2, 3, 4, 5].map((id) => (
 									<Star
 										key={id}
@@ -38,6 +39,7 @@ export function CompanyStats(): ReactElement {
 									/>
 								))}
 							</div>
+							<span className="sr-only">Rated 5 out of 5 stars</span>
 						</StatCard>
 
 						{/* 1.5M+ Retail Touchpoints */}
