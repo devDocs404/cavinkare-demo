@@ -58,13 +58,17 @@ export function OrganisationMenu(): ReactElement {
 					</div>
 				</div>
 				{/* Video Placeholder */}
-				<div className="relative mt-auto aspect-video w-full overflow-hidden rounded-xl bg-linear-to-br from-slate-200 to-slate-400 dark:from-slate-700 dark:to-slate-800">
+				<button
+					type="button"
+					aria-label="Play About CavinKare video"
+					className="relative mt-auto aspect-video w-full overflow-hidden rounded-xl bg-linear-to-br from-slate-200 to-slate-400 dark:from-slate-700 dark:to-slate-800 transition-transform hover:scale-[1.02] focus:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
+				>
 					<div className="absolute inset-0 flex items-center justify-center bg-black/20">
 						<div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm">
-							<Play className="ml-1 h-6 w-6 text-white" />
+							<Play className="ml-1 h-6 w-6 text-white" aria-hidden="true" />
 						</div>
 					</div>
-				</div>
+				</button>
 			</div>
 
 			{/* Column 2: Operations */}
