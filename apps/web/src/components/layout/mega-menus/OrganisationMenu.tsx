@@ -1,17 +1,20 @@
 import { ChevronRight, Play } from "lucide-react";
 import type { ReactElement } from "react";
+import { Link } from "react-router-dom";
 import brandLogo from "../../../assets/brandLogo.svg";
 
 function MenuLink({
   title,
   desc,
+  href = "#/",
 }: {
   title: string;
   desc?: string;
+  href?: string;
 }): ReactElement {
   return (
-    <a
-      href="#/"
+    <Link
+      to={href}
       className="group flex items-center justify-between rounded-xl p-3 transition-colors hover:bg-gray-50 dark:hover:bg-slate-800/50"
     >
       <div className="flex flex-col gap-1">
@@ -27,7 +30,7 @@ function MenuLink({
       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white transition-colors group-hover:border-brand-blue-dark group-hover:bg-brand-blue-dark/5 dark:border-slate-700 dark:bg-slate-900 dark:group-hover:border-blue-500">
         <ChevronRight className="h-4 w-4 text-gray-400 group-hover:text-brand-blue-dark dark:group-hover:text-blue-400" />
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -99,6 +102,7 @@ export function OrganisationMenu(): ReactElement {
             <MenuLink
               title="Media"
               desc="Learn what drives CavinKare's purpose and growth journey."
+              href="/organisation/media"
             />
             <MenuLink
               title="Awards & Recognitions"
