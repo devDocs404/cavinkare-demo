@@ -17,7 +17,10 @@ export function CompanyStats(): ReactElement {
 						{/* 91% Consumer Satisfaction */}
 						<StatCard className="min-h-[260px] justify-start">
 							<h3 className="text-5xl font-extrabold tracking-tight text-brand-dark md:text-6xl dark:text-white">
-								91<span className="text-brand-blue dark:text-blue-400">%</span>
+								91
+								<span className="text-gradient-brand dark:text-blue-400">
+									%
+								</span>
 							</h3>
 							<p className="mt-4 text-xl leading-tight font-bold text-brand-dark dark:text-slate-300">
 								Consumer
@@ -31,7 +34,7 @@ export function CompanyStats(): ReactElement {
 									<Star
 										key={id}
 										size={20}
-										className="fill-brand-blue text-brand-blue dark:fill-blue-400 dark:text-blue-400"
+										className="fill-brand-blue text-gradient-brand dark:fill-blue-400 dark:text-blue-400"
 									/>
 								))}
 							</div>
@@ -70,13 +73,15 @@ export function CompanyStats(): ReactElement {
 								</div>
 								<p className="z-10 text-sm font-bold text-brand-dark dark:text-slate-300">
 									Exports to{" "}
-									<span className="text-brand-blue dark:text-blue-400">
+									<span className="text-gradient-brand dark:text-blue-400">
 										Over
 									</span>
 								</p>
 								<h3 className="z-10 my-2 text-6xl font-extrabold text-brand-dark dark:text-white">
 									25
-									<span className="text-brand-blue dark:text-blue-400">+</span>
+									<span className="text-gradient-brand dark:text-blue-400">
+										+
+									</span>
 								</h3>
 								<p className="z-10 text-sm font-bold text-brand-dark dark:text-slate-300">
 									Countries
@@ -85,16 +90,18 @@ export function CompanyStats(): ReactElement {
 
 							{/* 16+ Patents */}
 							<StatCard className="min-h-[180px] justify-center">
-								<div className="pointer-events-none absolute right-4 bottom-4 text-brand-blue opacity-5 transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-3 dark:text-blue-400 dark:opacity-10">
+								<div className="pointer-events-none absolute right-4 bottom-4 text-gradient-brand opacity-5 transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-3 dark:text-blue-400 dark:opacity-10">
 									<DocumentIcon width={120} height={120} />
 								</div>
 								<h3 className="z-10 my-2 text-6xl font-extrabold text-brand-dark dark:text-white">
 									16
-									<span className="text-brand-blue dark:text-blue-400">+</span>
+									<span className="text-gradient-brand dark:text-blue-400">
+										+
+									</span>
 								</h3>
 								<p className="z-10 text-sm font-bold text-brand-dark dark:text-slate-300">
 									Patents{" "}
-									<span className="text-brand-blue dark:text-blue-400">
+									<span className="text-gradient-brand dark:text-blue-400">
 										Filed
 									</span>
 								</p>
@@ -122,11 +129,13 @@ export function CompanyStats(): ReactElement {
 						<StatCard className="flex-row! items-center! p-8! sm:min-h-[120px]">
 							<h3 className="mr-6 shrink-0 text-4xl font-extrabold text-brand-dark transition-transform duration-300 group-hover:-translate-y-1 md:text-5xl dark:text-white">
 								1.2M
-								<span className="text-brand-blue dark:text-blue-400">+</span>
+								<span className="text-gradient-brand dark:text-blue-400">
+									+
+								</span>
 							</h3>
 							<p className="mt-2 text-base font-bold text-brand-dark sm:mt-0 dark:text-slate-300">
 								Lives impacted through{" "}
-								<span className="text-brand-blue dark:text-blue-400">
+								<span className="text-gradient-brand dark:text-blue-400">
 									CSR programs
 								</span>
 							</p>
@@ -137,31 +146,41 @@ export function CompanyStats(): ReactElement {
 					<div className="col-span-1 flex flex-col gap-4 md:gap-6">
 						{/* 44% Sustainable Packaging Rate */}
 						<StatCard className="min-h-[260px] justify-center md:min-h-[280px]">
-							<div className="pointer-events-none absolute top-4 right-4 origin-center text-brand-blue opacity-10 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12 dark:text-blue-400 dark:opacity-20">
+							<div className="pointer-events-none absolute top-4 right-4 origin-center text-gradient-brand opacity-10 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12 dark:text-blue-400 dark:opacity-20">
 								<LeafIcon width={140} height={140} />
 							</div>
 							<h3 className="z-10 mt-auto text-6xl font-extrabold text-brand-dark md:text-7xl dark:text-white">
-								44<span className="text-brand-blue dark:text-blue-400">%</span>
+								44
+								<span className="text-gradient-brand dark:text-blue-400">
+									%
+								</span>
 							</h3>
 							<p className="z-10 mt-4 text-xl leading-tight font-bold text-brand-dark dark:text-slate-300">
 								Sustainable
 								<br />
 								Packaging{" "}
-								<span className="text-brand-blue dark:text-blue-400">Rate</span>
+								<span className="text-gradient-brand dark:text-blue-400">
+									Rate
+								</span>
 							</p>
 						</StatCard>
 
 						{/* 62% Of products */}
 						<StatCard className="min-h-[140px] justify-center p-6!">
 							<h3 className="text-4xl font-extrabold text-brand-dark transition-transform duration-300 group-hover:scale-105 dark:text-white">
-								62<span className="text-brand-blue dark:text-blue-400">%</span>
+								62
+								<span className="text-gradient-brand dark:text-blue-400">
+									%
+								</span>
 							</h3>
 							<p className="mt-2 text-sm leading-tight font-bold text-brand-dark dark:text-slate-300">
 								Of products made{" "}
-								<span className="text-brand-blue dark:text-blue-400">with</span>
+								<span className="text-gradient-brand dark:text-blue-400">
+									with
+								</span>
 								<br />
 								herbal or natural{" "}
-								<span className="text-brand-blue dark:text-blue-400">
+								<span className="text-gradient-brand dark:text-blue-400">
 									ingredients
 								</span>
 							</p>
@@ -170,7 +189,10 @@ export function CompanyStats(): ReactElement {
 						{/* 19M+ CHIK */}
 						<StatCard className="min-h-[120px] justify-center p-6!">
 							<h3 className="text-4xl font-extrabold text-brand-dark transition-transform duration-300 group-hover:-translate-y-1 dark:text-white">
-								19M<span className="text-brand-blue dark:text-blue-400">+</span>
+								19M
+								<span className="text-gradient-brand dark:text-blue-400">
+									+
+								</span>
 							</h3>
 							<p className="mt-1 text-sm font-bold text-brand-dark dark:text-slate-300">
 								CHIK Sachets/mo
