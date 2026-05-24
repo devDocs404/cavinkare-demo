@@ -6,6 +6,7 @@ import { Hero } from "../components/sections/Hero";
 import { InsideCavinKare } from "../components/sections/InsideCavinKare";
 import { OurBrand } from "../components/sections/OurBrand";
 import { PurposeSection } from "../components/sections/PurposeSection";
+import { TimelineSection } from "../components/sections/TimelineSection";
 
 export function HomePage(): ReactElement {
 	return (
@@ -14,8 +15,9 @@ export function HomePage(): ReactElement {
 			<InsideCavinKare />
 			<CompanyStats />
 			<OurBrand />
-			<PurposeSection />
+			<TimelineSection />
 			<CareersSection />
+			<PurposeSection />
 			<Contact />
 		</>
 	);
