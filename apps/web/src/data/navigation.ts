@@ -22,7 +22,7 @@ export const NAV_ITEMS = [
 	},
 	{
 		label: "Careers",
-		hasDropdown: false,
+		hasDropdown: true,
 	},
 	{
 		label: "Contact Us",

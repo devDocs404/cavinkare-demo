@@ -5,14 +5,26 @@ import { useState } from "react";
 import brandLogo from "../../assets/brandLogo.svg";
 import { NAV_ITEMS } from "../../data/navigation";
 import { useTheme } from "../ui/theme-provider";
+import { CareersMenu } from "./mega-menus/CareersMenu";
+import { CavinCaresMenu } from "./mega-menus/CavinCaresMenu";
+import { OrganisationMenu } from "./mega-menus/OrganisationMenu";
+import { ProductsMenu } from "./mega-menus/ProductsMenu";
 
 export function Navbar(): ReactElement {
 	const { theme, setTheme } = useTheme();
 
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+	const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(
+		null,
+	);
 
 	return (
-		<>
+		// biome-ignore lint/a11y/noStaticElementInteractions: Mouse tracking wrapper for closing mega menu
+		<div
+			className="group/nav relative"
+			onMouseLeave={() => setActiveMegaMenu(null)}
+		>
 			{/* Navbar */}
 			<nav className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/80">
 				<div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
@@ -29,21 +41,32 @@ export function Navbar(): ReactElement {
 					</a>
 
 					{/* Desktop Navigation */}
-					<div className="hidden items-center gap-8 lg:flex">
+					<div className="hidden h-full items-center gap-8 lg:flex">
 						{NAV_ITEMS.map((item) => (
-							<button
-								key={item.label}
-								type="button"
-								className="group flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors duration-300 hover:text-brand-blue-dark dark:text-gray-200 dark:hover:text-blue-400"
-							>
-								<span className="text-xl font-bold text-[#9198a1]">
-									{item.label}
-								</span>
+							<div key={item.label} className="flex h-full items-center">
+								<button
+									type="button"
+									className="group flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors duration-300 hover:text-brand-blue-dark dark:text-gray-200 dark:hover:text-blue-400"
+									onMouseEnter={() =>
+										item.hasDropdown && setActiveMegaMenu(item.label)
+									}
+									onFocus={() =>
+										item.hasDropdown && setActiveMegaMenu(item.label)
+									}
+								>
+									<span className="text-xl font-bold text-[#9198a1]">
+										{item.label}
+									</span>
 
-								{item.hasDropdown && (
-									<ChevronDown className="h-4 w-4 text-gray-400 transition-transform duration-300 group-hover:rotate-180 group-hover:text-brand-blue-dark dark:group-hover:text-blue-400" />
-								)}
-							</button>
+									{item.hasDropdown && (
+										<ChevronDown
+											className={`h-4 w-4 text-gray-400 transition-transform duration-300 group-hover:text-brand-blue-dark dark:group-hover:text-blue-400 ${
+												activeMegaMenu === item.label ? "rotate-180" : ""
+											}`}
+										/>
+									)}
+								</button>
+							</div>
 						))}
 					</div>
 
@@ -100,6 +123,22 @@ export function Navbar(): ReactElement {
 				</div>
 			</nav>
 
+			{/* Mega Menu Overlay */}
+			<div
+				className={`absolute left-0 right-0 top-full z-40 border-b border-gray-100 bg-white/95 shadow-xl backdrop-blur-xl transition-all duration-300 dark:border-slate-800 dark:bg-slate-950/95 ${
+					activeMegaMenu
+						? "visible translate-y-0 opacity-100"
+						: "invisible -translate-y-2 opacity-0"
+				}`}
+			>
+				<div className="mx-auto max-w-7xl">
+					{activeMegaMenu === "Organisation" && <OrganisationMenu />}
+					{activeMegaMenu === "Products" && <ProductsMenu />}
+					{activeMegaMenu === "Cavin Cares" && <CavinCaresMenu />}
+					{activeMegaMenu === "Careers" && <CareersMenu />}
+				</div>
+			</div>
+
 			{/* Overlay */}
 			<div
 				onClick={() => setIsMobileMenuOpen(false)}
@@ -137,21 +176,41 @@ export function Navbar(): ReactElement {
 
 				{/* Links */}
 				<div className="flex flex-1 flex-col overflow-y-auto px-6 py-8">
-					<div className="flex flex-col gap-6">
+					<div className="flex flex-col gap-2">
 						{NAV_ITEMS.map((item) => (
-							<button
-								key={item.label}
-								type="button"
-								className="group flex items-center justify-between border-b border-gray-100 pb-4 text-left dark:border-slate-800"
-							>
-								<span className="text-lg font-medium text-gray-800 transition-colors duration-300 group-hover:text-brand-blue-dark dark:text-gray-100 dark:group-hover:text-blue-400">
-									{item.label}
-								</span>
+							<div key={item.label} className="flex flex-col">
+								<button
+									type="button"
+									onClick={() =>
+										item.hasDropdown
+											? setExpandedMobileMenu(
+													expandedMobileMenu === item.label ? null : item.label,
+												)
+											: undefined
+									}
+									className="group flex items-center justify-between border-b border-gray-100 py-3 text-left dark:border-slate-800"
+								>
+									<span className="text-lg font-medium text-gray-800 transition-colors duration-300 group-hover:text-brand-blue-dark dark:text-gray-100 dark:group-hover:text-blue-400">
+										{item.label}
+									</span>
 
-								{item.hasDropdown && (
-									<ChevronDown className="h-5 w-5 text-gray-400 transition-transform duration-300 group-hover:rotate-180" />
+									{item.hasDropdown && (
+										<ChevronDown
+											className={`h-5 w-5 text-gray-400 transition-transform duration-300 group-hover:text-brand-blue-dark dark:group-hover:text-blue-400 ${
+												expandedMobileMenu === item.label ? "rotate-180" : ""
+											}`}
+										/>
+									)}
+								</button>
+								{/* Expanded mobile sub-menu container */}
+								{item.hasDropdown && expandedMobileMenu === item.label && (
+									<div className="mt-2 flex flex-col gap-2 rounded-xl bg-gray-50 p-4 dark:bg-slate-900">
+										<p className="text-sm text-gray-500 dark:text-gray-400">
+											Detailed menu available on desktop version.
+										</p>
+									</div>
 								)}
-							</button>
+							</div>
 						))}
 					</div>
 
@@ -191,6 +250,6 @@ export function Navbar(): ReactElement {
 					</div>
 				</div>
 			</aside>
-		</>
+		</div>
 	);
 }
