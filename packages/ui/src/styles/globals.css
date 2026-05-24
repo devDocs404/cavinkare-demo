@@ -191,3 +191,49 @@
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 }
+
+/* ─── Accessibility: Focus-visible indicators (WCAG 2.4.7) ─── */
+:focus-visible {
+	outline: 2px solid var(--color-brand-blue, #053a92);
+	outline-offset: 2px;
+}
+
+.dark :focus-visible {
+	outline-color: #60a5fa;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* ─── Accessibility: Screen-reader-only text ─── */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* ─── Accessibility: Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* ─── Decorative: Grid background pattern ─── */
+.grid-bg {
+	background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+	background-size: 24px 24px;
+}
