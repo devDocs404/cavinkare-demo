@@ -13,14 +13,16 @@ export function MediaPage(): ReactElement {
 			<section className="relative overflow-hidden bg-[#F4F8FB] pt-16 pb-20 dark:bg-slate-900">
 				{/* Background Grid Pattern (Optional touch for exactness) */}
 				<div className="absolute inset-0 pointer-events-none grid-bg opacity-50 dark:opacity-20" />
-				
+
 				<div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
 					<div className="grid items-center gap-12 lg:grid-cols-2">
 						{/* Left Text */}
 						<div className="max-w-xl">
 							<h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
 								<span className="block">Driven by Purpose.</span>
-								<span className="block text-[#003876] dark:text-blue-400">Covered with Pride.</span>
+								<span className="block text-[#003876] dark:text-blue-400">
+									Covered with Pride.
+								</span>
 							</h1>
 							<p className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400">
 								Explore how CavinKare is making headlines from breakthrough
@@ -47,23 +49,25 @@ export function MediaPage(): ReactElement {
 			<section className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8 lg:py-16">
 				{/* Tabs */}
 				<div className="mb-10 flex flex-wrap justify-center gap-4 md:gap-8 border-b border-gray-200 dark:border-slate-800 pb-2">
-					{["CavinKare in News", "Press Library", "Press Release"].map((tab) => (
-						<button
-							key={tab}
-							onClick={() => setActiveTab(tab)}
-							className={`relative pb-4 text-sm md:text-base font-semibold transition-colors ${
-								activeTab === tab
-									? "text-[#003876] dark:text-blue-400"
-									: "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
-							}`}
-							type="button"
-						>
-							{tab}
-							{activeTab === tab && (
-								<span className="absolute bottom-[-2px] left-0 h-0.5 w-full bg-[#003876] dark:bg-blue-400" />
-							)}
-						</button>
-					))}
+					{["CavinKare in News", "Press Library", "Press Release"].map(
+						(tab) => (
+							<button
+								key={tab}
+								onClick={() => setActiveTab(tab)}
+								className={`relative pb-4 text-sm md:text-base font-semibold transition-colors ${
+									activeTab === tab
+										? "text-[#003876] dark:text-blue-400"
+										: "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+								}`}
+								type="button"
+							>
+								{tab}
+								{activeTab === tab && (
+									<span className="absolute bottom-[-2px] left-0 h-0.5 w-full bg-[#003876] dark:bg-blue-400" />
+								)}
+							</button>
+						),
+					)}
 				</div>
 
 				{/* Filters Bar */}
@@ -145,9 +149,7 @@ export function MediaPage(): ReactElement {
 									{article.excerpt}
 								</p>
 								<div className="mt-auto">
-									<span
-										className="inline-flex items-center text-sm font-semibold text-[#003876] group-hover:underline dark:text-blue-400"
-									>
+									<span className="inline-flex items-center text-sm font-semibold text-[#003876] group-hover:underline dark:text-blue-400">
 										Read the Full Article on {article.publication}
 									</span>
 								</div>

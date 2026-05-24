@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import { RootLayout } from "../components/layout/RootLayout";
-import { HomePage } from "../pages/HomePage";
-import { MediaPage } from "../pages/MediaPage";
-import { MediaArticlePage } from "../pages/MediaArticlePage";
+import { RootLayout } from "@/components/layout/RootLayout";
+import { HomePage } from "@/pages/HomePage";
+import { MediaPage } from "@/pages/MediaPage";
+import { MediaArticlePage } from "@/pages/MediaArticlePage";
+import { ResearchDevelopmentPage } from "@/pages/ResearchDevelopmentPage";
 
 export const router = createBrowserRouter([
 	{
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
 			{
 				path: "organisation/media/:id",
 				element: <MediaArticlePage />,
+			},
+			{
+				path: "organisation/research-development",
+				element: <ResearchDevelopmentPage />,
 			},
 		],
 	},

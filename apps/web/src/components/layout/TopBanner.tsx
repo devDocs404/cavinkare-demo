@@ -5,7 +5,7 @@ export function TopBanner(): ReactElement {
 	return (
 		<div
 			id="top-banner"
-			className="relative flex h-10 w-full items-center justify-between overflow-hidden bg-banner-bg px-4 text-white dark:bg-slate-900"
+			className="relative flex h-10 w-full gap-10 items-center justify-center overflow-hidden bg-banner-bg px-4 text-white dark:bg-slate-900"
 		>
 			{/* Left */}
 			<button
@@ -21,11 +21,9 @@ export function TopBanner(): ReactElement {
 			</button>
 
 			{/* Marquee */}
-			<div className="absolute left-1/2 hidden w-full max-w-2xl -translate-x-1/2 overflow-hidden md:block">
-				<div className="animate-marquee text-xs font-medium whitespace-nowrap text-white/80">
-					Apply for Chinni Krishnan Innovation Awards • ESG transparency •
-					Sustainable growth • Explore reports and certifications
-				</div>
+			<div className=" text-xs font-medium whitespace-nowrap text-white/80">
+				Apply for Chinni Krishnan Innovation Awards • ESG transparency •
+				Sustainable growth • Explore reports and certifications
 			</div>
 
 			{/* Right */}

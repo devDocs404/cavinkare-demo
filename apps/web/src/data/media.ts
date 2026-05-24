@@ -69,7 +69,7 @@ export const MEDIA_ARTICLES: MediaArticle[] = [
         <p>Contact:</p>
         <p>editor@cavinkare.com</p>
       </div>
-    `
+    `,
 	},
 	{
 		id: "2",

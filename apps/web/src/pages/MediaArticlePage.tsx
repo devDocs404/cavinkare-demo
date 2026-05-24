@@ -53,7 +53,8 @@ export function MediaArticlePage(): ReactElement {
 								</h1>
 								<p className="mb-6 text-xl text-gray-600 dark:text-gray-300 font-medium">
 									{/* The subtitle/excerpt is used here. In the design it's a sub-heading. */}
-									Industry was hamstrung by twin challenges of subdued profit margins, weak rural demand in CY22
+									Industry was hamstrung by twin challenges of subdued profit
+									margins, weak rural demand in CY22
 								</p>
 
 								{/* Image */}
@@ -84,7 +85,10 @@ export function MediaArticlePage(): ReactElement {
 									<div
 										// biome-ignore lint/security/noDangerouslySetInnerHtml: Mock data from trusted source
 										dangerouslySetInnerHTML={{
-											__html: typeof article.content === 'string' ? article.content : '',
+											__html:
+												typeof article.content === "string"
+													? article.content
+													: "",
 										}}
 									/>
 								) : (
@@ -140,11 +144,13 @@ export function MediaArticlePage(): ReactElement {
 											{related.title}
 										</h4>
 										<p className="mb-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
-											Expectations for 2023<br/>
+											Expectations for 2023
+											<br />
 											{related.excerpt}
 										</p>
 										<p className="mb-2 text-xs text-red-600 dark:text-red-400">
-											{related.date} | <span className="font-semibold">{related.location}</span>
+											{related.date} |{" "}
+											<span className="font-semibold">{related.location}</span>
 										</p>
 										<span className="text-xs text-[#003876] group-hover:underline dark:text-blue-400">
 											Read the Full Article at {related.publication}

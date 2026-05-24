@@ -1,6 +1,7 @@
 import { ChevronDown, Menu, Moon, Search, Sun, X } from "lucide-react";
 import type { ReactElement } from "react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import brandLogo from "../../assets/brandLogo.svg";
 import { NAV_ITEMS } from "../../data/navigation";
@@ -19,6 +20,15 @@ export function Navbar(): ReactElement {
 		null,
 	);
 
+	const location = useLocation();
+
+	const isActive = (item: (typeof NAV_ITEMS)[number]) => {
+		if (item.href === "/") {
+			return location.pathname === "/";
+		}
+		return item.href ? location.pathname.startsWith(item.href) : false;
+	};
+
 	return (
 		// biome-ignore lint/a11y/noStaticElementInteractions: Mouse tracking wrapper for closing mega menu
 		<div
@@ -30,7 +40,7 @@ export function Navbar(): ReactElement {
 				<div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
 					{/* Logo */}
 					<a
-						href="#/"
+						href="/"
 						className="flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.02]"
 					>
 						<img
@@ -44,28 +54,49 @@ export function Navbar(): ReactElement {
 					<div className="hidden h-full items-center gap-8 lg:flex">
 						{NAV_ITEMS.map((item) => (
 							<div key={item.label} className="flex h-full items-center">
-								<button
-									type="button"
-									className="group flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors duration-300 hover:text-brand-blue-dark dark:text-gray-200 dark:hover:text-blue-400"
-									onMouseEnter={() =>
-										item.hasDropdown && setActiveMegaMenu(item.label)
-									}
-									onFocus={() =>
-										item.hasDropdown && setActiveMegaMenu(item.label)
-									}
-								>
-									<span className="text-xl font-bold text-[#9198a1]">
-										{item.label}
-									</span>
+								{item.hasDropdown ? (
+									<button
+										type="button"
+										className="group flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors duration-300 hover:text-brand-blue-dark dark:text-gray-200 dark:hover:text-blue-400"
+										onMouseEnter={() => setActiveMegaMenu(item.label)}
+										onFocus={() => setActiveMegaMenu(item.label)}
+									>
+										<span
+											className={`text-[15px] font-bold transition-colors duration-300 ${
+												isActive(item) || activeMegaMenu === item.label
+													? "text-[#0033a0] dark:text-blue-400"
+													: "text-[#9198a1] group-hover:text-black dark:group-hover:text-white"
+											}`}
+										>
+											{item.label}
+										</span>
 
-									{item.hasDropdown && (
 										<ChevronDown
-											className={`h-4 w-4 text-gray-400 transition-transform duration-300 group-hover:text-brand-blue-dark dark:group-hover:text-blue-400 ${
-												activeMegaMenu === item.label ? "rotate-180" : ""
+											className={`h-4 w-4 transition-all duration-300 ${
+												activeMegaMenu === item.label
+													? "rotate-180 text-[#0033a0] dark:text-blue-400"
+													: "text-gray-400 group-hover:text-black dark:group-hover:text-white"
 											}`}
 										/>
-									)}
-								</button>
+									</button>
+								) : (
+									<Link
+										to={item.href || "#"}
+										className="group flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors duration-300 hover:text-brand-blue-dark dark:text-gray-200 dark:hover:text-blue-400"
+										onMouseEnter={() => setActiveMegaMenu(null)}
+										onFocus={() => setActiveMegaMenu(null)}
+									>
+										<span
+											className={`text-[15px] font-bold transition-colors duration-300 ${
+												isActive(item)
+													? "text-[#0033a0] dark:text-blue-400"
+													: "text-[#9198a1] group-hover:text-black dark:group-hover:text-white"
+											}`}
+										>
+											{item.label}
+										</span>
+									</Link>
+								)}
 							</div>
 						))}
 					</div>
@@ -179,29 +210,49 @@ export function Navbar(): ReactElement {
 					<div className="flex flex-col gap-2">
 						{NAV_ITEMS.map((item) => (
 							<div key={item.label} className="flex flex-col">
-								<button
-									type="button"
-									onClick={() =>
-										item.hasDropdown
-											? setExpandedMobileMenu(
-													expandedMobileMenu === item.label ? null : item.label,
-												)
-											: undefined
-									}
-									className="group flex items-center justify-between border-b border-gray-100 py-3 text-left dark:border-slate-800"
-								>
-									<span className="text-lg font-medium text-gray-800 transition-colors duration-300 group-hover:text-brand-blue-dark dark:text-gray-100 dark:group-hover:text-blue-400">
-										{item.label}
-									</span>
+								{item.hasDropdown ? (
+									<button
+										type="button"
+										onClick={() =>
+											setExpandedMobileMenu(
+												expandedMobileMenu === item.label ? null : item.label,
+											)
+										}
+										className="group flex items-center justify-between border-b border-gray-100 py-3 text-left dark:border-slate-800"
+									>
+										<span
+											className={`text-lg font-medium transition-colors duration-300 group-hover:text-brand-blue-dark dark:group-hover:text-blue-400 ${
+												isActive(item)
+													? "text-[#0033a0] dark:text-blue-400"
+													: "text-gray-800 dark:text-gray-100"
+											}`}
+										>
+											{item.label}
+										</span>
 
-									{item.hasDropdown && (
 										<ChevronDown
 											className={`h-5 w-5 text-gray-400 transition-transform duration-300 group-hover:text-brand-blue-dark dark:group-hover:text-blue-400 ${
 												expandedMobileMenu === item.label ? "rotate-180" : ""
 											}`}
 										/>
-									)}
-								</button>
+									</button>
+								) : (
+									<Link
+										to={item.href || "#"}
+										onClick={() => setIsMobileMenuOpen(false)}
+										className="group flex items-center justify-between border-b border-gray-100 py-3 text-left dark:border-slate-800"
+									>
+										<span
+											className={`text-lg font-medium transition-colors duration-300 group-hover:text-brand-blue-dark dark:group-hover:text-blue-400 ${
+												isActive(item)
+													? "text-[#0033a0] dark:text-blue-400"
+													: "text-gray-800 dark:text-gray-100"
+											}`}
+										>
+											{item.label}
+										</span>
+									</Link>
+								)}
 								{/* Expanded mobile sub-menu container */}
 								{item.hasDropdown && expandedMobileMenu === item.label && (
 									<div className="mt-2 flex flex-col gap-2 rounded-xl bg-gray-50 p-4 dark:bg-slate-900">
