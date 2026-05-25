@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
 import { ChevronRight } from "lucide-react";
+import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
 export function RndHero(): ReactElement {

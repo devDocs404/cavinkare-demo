@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { RndHero } from "../components/sections/rnd/RndHero";
 import { RndHighlights } from "../components/sections/rnd/RndHighlights";
-import { RndProcess } from "../components/sections/rnd/RndProcess";
 import { RndPartner } from "../components/sections/rnd/RndPartner";
+import { RndProcess } from "../components/sections/rnd/RndProcess";
 
 export function ResearchDevelopmentPage(): import("react").ReactElement {
 	useEffect(() => {

@@ -1,6 +1,6 @@
 import { ChevronDown, Menu, Moon, Search, Sun, X } from "lucide-react";
 import type { ReactElement } from "react";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import brandLogo from "../../assets/brandLogo.svg";

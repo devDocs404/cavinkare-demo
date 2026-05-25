@@ -1,7 +1,7 @@
+import { MapPin } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import type { ReactElement } from "react";
-import { useState, useEffect, useCallback, useRef } from "react";
-import { MapPin } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FadeIn } from "../ui/motion/FadeIn";
 
 const timelineData = [

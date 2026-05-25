@@ -1,19 +1,18 @@
 import type { ReactElement } from "react";
-import { StatCard } from "./stats/StatCard";
-
+import thirtyYears from "../../assets/30YearsStats.svg";
+import consumerScore from "../../assets/consumerScore.svg";
+import csr from "../../assets/csr.svg";
+import exports from "../../assets/exportsStatus.png";
+import herbal from "../../assets/herbal.svg";
+import patients from "../../assets/patientsStatus.svg";
+import retail from "../../assets/retail.svg";
+import sachets from "../../assets/sachets.svg";
+import sustainable from "../../assets/sustainable.svg";
 import {
 	FadeInStaggerContainer,
 	FadeInStaggerItem,
 } from "../ui/motion/FadeInStagger";
-import thirtyYears from "../../assets/30YearsStats.svg";
-import exports from "../../assets/exportsStatus.png";
-import patients from "../../assets/patientsStatus.svg";
-import consumerScore from "../../assets/consumerScore.svg";
-import retail from "../../assets/retail.svg";
-import sustainable from "../../assets/sustainable.svg";
-import sachets from "../../assets/sachets.svg";
-import csr from "../../assets/csr.svg";
-import herbal from "../../assets/herbal.svg";
+import { StatCard } from "./stats/StatCard";
 
 export function CompanyStats(): ReactElement {
 	const imgHoverClass =

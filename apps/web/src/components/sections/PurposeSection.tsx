@@ -2,12 +2,12 @@ import type { ReactElement } from "react";
 import { useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Keyboard, Mousewheel, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { FadeIn } from "../ui/motion/FadeIn";
 import {
 	FadeInStaggerContainer,
 	FadeInStaggerItem,
 } from "../ui/motion/FadeInStagger";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";

@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { BRAND_IMAGES } from "../../data/brands";
-import { FadeIn } from "../ui/motion/FadeIn";
 import { ImageSlider3D } from "../ui/ImageSlider3D";
+import { FadeIn } from "../ui/motion/FadeIn";
 
 export function OurBrand(): ReactElement {
 	return (

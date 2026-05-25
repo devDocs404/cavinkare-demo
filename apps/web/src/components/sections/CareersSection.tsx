@@ -1,11 +1,11 @@
 import type { ReactElement } from "react";
-import { JobCarousel } from "./careers/JobCarousel";
-import { PeopleStories } from "./careers/PeopleStories";
 import { FadeIn } from "../ui/motion/FadeIn";
 import {
 	FadeInStaggerContainer,
 	FadeInStaggerItem,
 } from "../ui/motion/FadeInStagger";
+import { JobCarousel } from "./careers/JobCarousel";
+import { PeopleStories } from "./careers/PeopleStories";
 
 export function CareersSection(): ReactElement {
 	return (

@@ -1,11 +1,11 @@
 import type { ReactElement } from "react";
 import { PEOPLE } from "../../../data/careers";
-import { PersonCard } from "./PersonCard";
 import { FadeIn } from "../../ui/motion/FadeIn";
 import {
 	FadeInStaggerContainer,
 	FadeInStaggerItem,
 } from "../../ui/motion/FadeInStagger";
+import { PersonCard } from "./PersonCard";
 
 export function PeopleStories(): ReactElement {
 	return (

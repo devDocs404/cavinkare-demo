@@ -1,5 +1,6 @@
-import { Headphones, Mail, MapPin, Phone, CheckCircle2 } from "lucide-react";
-import { useState, type ReactElement, type ReactNode } from "react";
+import { CheckCircle2, Headphones, Mail, MapPin, Phone } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { type ReactElement, type ReactNode, useState } from "react";
 import type { ContactCardIcon } from "../../data/contact";
 import { CONTACT_CARDS } from "../../data/contact";
 import { FadeIn } from "../ui/motion/FadeIn";
@@ -7,7 +8,6 @@ import {
 	FadeInStaggerContainer,
 	FadeInStaggerItem,
 } from "../ui/motion/FadeInStagger";
-import { AnimatePresence, motion } from "motion/react";
 
 const ICON_MAP: Record<ContactCardIcon, ReactNode> = {
 	mail: <Mail size={18} />,

@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
 import type { ReactElement } from "react";
+import { useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./routes";
 import { SplashScreen } from "./components/ui/SplashScreen";
+import { router } from "./routes";
 
 export function App(): ReactElement {
 	const [showSplash, setShowSplash] = useState(true);
