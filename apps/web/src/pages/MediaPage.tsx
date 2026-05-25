@@ -12,7 +12,10 @@ export function MediaPage(): ReactElement {
 			{/* Hero Section */}
 			<section className="relative overflow-hidden bg-[#F4F8FB] pt-16 pb-20 dark:bg-slate-900">
 				{/* Background Grid Pattern (Optional touch for exactness) */}
-				<div className="absolute inset-0 pointer-events-none grid-bg opacity-50 dark:opacity-20" aria-hidden="true" />
+				<div
+					className="absolute inset-0 pointer-events-none grid-bg opacity-50 dark:opacity-20"
+					aria-hidden="true"
+				/>
 
 				<div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
 					<div className="grid items-center gap-12 lg:grid-cols-2">
@@ -129,7 +132,10 @@ export function MediaPage(): ReactElement {
 							aria-label="Search articles"
 							className="w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[#003876] focus:ring-1 focus:ring-[#003876] dark:border-slate-700 dark:bg-slate-800 dark:text-gray-100 dark:placeholder-gray-400"
 						/>
-						<Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" aria-hidden="true" />
+						<Search
+							className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+							aria-hidden="true"
+						/>
 					</div>
 				</div>
 

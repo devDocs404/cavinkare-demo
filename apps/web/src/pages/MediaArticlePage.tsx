@@ -73,7 +73,12 @@ export function MediaArticlePage(): ReactElement {
 											{article.date} | {article.location}
 										</span>
 									</div>
-									<a href={article.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+									<a
+										href={article.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="hover:underline"
+									>
 										Read the Full Article at {article.publication}
 										<span className="sr-only"> (opens in new tab)</span>
 									</a>
@@ -102,8 +107,13 @@ export function MediaArticlePage(): ReactElement {
 								<h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
 									Leave your comment
 								</h2>
-								<form className="flex flex-col gap-4" aria-label="Leave a comment">
-									<label htmlFor="article-comment" className="sr-only">Your comment</label>
+								<form
+									className="flex flex-col gap-4"
+									aria-label="Leave a comment"
+								>
+									<label htmlFor="article-comment" className="sr-only">
+										Your comment
+									</label>
 									<textarea
 										id="article-comment"
 										rows={4}

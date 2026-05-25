@@ -2,7 +2,10 @@ import type { ReactElement } from "react";
 import type { NewsItem } from "../../data/news";
 import { NEWS_ITEMS } from "../../data/news";
 import { FadeIn } from "../ui/motion/FadeIn";
-import { FadeInStaggerContainer, FadeInStaggerItem } from "../ui/motion/FadeInStagger";
+import {
+	FadeInStaggerContainer,
+	FadeInStaggerItem,
+} from "../ui/motion/FadeInStagger";
 
 function NewsCard({ item }: { item: NewsItem }): ReactElement {
 	const innerContent = (
@@ -91,11 +94,17 @@ export function InsideCavinKare(): ReactElement {
 		<div id="inside-cavinkare" className="relative w-full">
 			<WaveTop />
 
-			<section aria-labelledby="inside-cavinkare-heading" className="relative w-full bg-surface-section px-6 py-24 md:px-12 dark:bg-slate-900">
+			<section
+				aria-labelledby="inside-cavinkare-heading"
+				className="relative w-full bg-surface-section px-6 py-24 md:px-12 dark:bg-slate-900"
+			>
 				<div className="relative z-10 mx-auto max-w-7xl">
 					{/* HEADER */}
 					<FadeIn className="mx-auto mb-8 max-w-4xl text-center md:mb-10">
-						<h2 id="inside-cavinkare-heading" className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
+						<h2
+							id="inside-cavinkare-heading"
+							className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-6xl lg:text-7xl dark:text-white"
+						>
 							Inside <span className="text-gradient-brand">CavinKare</span>
 						</h2>
 

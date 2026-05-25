@@ -13,7 +13,10 @@ export function OurBrand(): ReactElement {
 			<div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4">
 				<div className="mx-auto max-w-7xl">
 					<FadeIn className="relative z-10 mx-auto max-w-4xl text-center">
-						<h2 id="our-brands-heading" className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-white">
+						<h2
+							id="our-brands-heading"
+							className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-white"
+						>
 							Our <span className="text-gradient-brand">Brands</span>
 						</h2>
 					</FadeIn>

@@ -72,7 +72,8 @@ export function Navbar(): ReactElement {
 		const sidebar = sidebarRef.current;
 		const focusableSelector =
 			'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
-		const focusableElements = sidebar.querySelectorAll<HTMLElement>(focusableSelector);
+		const focusableElements =
+			sidebar.querySelectorAll<HTMLElement>(focusableSelector);
 
 		if (focusableElements.length === 0) {
 			return undefined;
@@ -111,14 +112,11 @@ export function Navbar(): ReactElement {
 
 	return (
 		// biome-ignore lint/a11y/noStaticElementInteractions: Mouse tracking wrapper for closing mega menu
-		<div
-			className="group/nav relative"
-			onMouseLeave={closeMegaMenu}
-		>
+		<div className="group/nav relative" onMouseLeave={closeMegaMenu}>
 			{/* Navbar */}
 			<nav
 				aria-label="Main navigation"
-				className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/80"
+				className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/80 font-berlin"
 			>
 				<div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
 					{/* Logo */}
@@ -199,15 +197,13 @@ export function Navbar(): ReactElement {
 						</button>
 
 						{/* Theme Toggle */}
-						<div
-							role="radiogroup"
+						<fieldset
 							aria-label="Theme selection"
 							className="hidden items-center rounded-full border border-gray-200 bg-gray-50/70 p-1 sm:flex dark:border-slate-700 dark:bg-slate-900/60"
 						>
 							<button
 								type="button"
-								role="radio"
-								aria-checked={theme !== "dark"}
+								aria-pressed={theme !== "dark"}
 								aria-label="Light mode"
 								onClick={() => setTheme("light")}
 								className={`flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ${
@@ -221,8 +217,7 @@ export function Navbar(): ReactElement {
 
 							<button
 								type="button"
-								role="radio"
-								aria-checked={theme === "dark"}
+								aria-pressed={theme === "dark"}
 								aria-label="Dark mode"
 								onClick={() => setTheme("dark")}
 								className={`flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ${
@@ -233,7 +228,7 @@ export function Navbar(): ReactElement {
 							>
 								<Moon className="h-4 w-4" aria-hidden="true" />
 							</button>
-						</div>
+						</fieldset>
 
 						{/* Mobile Menu */}
 						<button
@@ -251,8 +246,7 @@ export function Navbar(): ReactElement {
 			</nav>
 
 			{/* Mega Menu Overlay */}
-			<div
-				role="region"
+			<section
 				aria-label={activeMegaMenu ? `${activeMegaMenu} menu` : undefined}
 				className={`absolute left-0 right-0 top-full z-40 flex justify-center px-4 pt-2 transition-all duration-300 md:px-6 lg:px-8 ${
 					activeMegaMenu
@@ -266,7 +260,7 @@ export function Navbar(): ReactElement {
 					{activeMegaMenu === "Cavin Cares" && <CavinCaresMenu />}
 					{activeMegaMenu === "Careers" && <CareersMenu />}
 				</div>
-			</div>
+			</section>
 
 			{/* Overlay */}
 			<div
@@ -375,15 +369,13 @@ export function Navbar(): ReactElement {
 							Appearance
 						</span>
 
-						<div
-							role="radiogroup"
+						<fieldset
 							aria-label="Theme selection"
 							className="flex items-center rounded-full border border-gray-200 bg-gray-50/70 p-1 dark:border-slate-700 dark:bg-slate-900/60"
 						>
 							<button
 								type="button"
-								role="radio"
-								aria-checked={theme !== "dark"}
+								aria-pressed={theme !== "dark"}
 								aria-label="Light mode"
 								onClick={() => setTheme("light")}
 								className={`flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ${
@@ -397,8 +389,7 @@ export function Navbar(): ReactElement {
 
 							<button
 								type="button"
-								role="radio"
-								aria-checked={theme === "dark"}
+								aria-pressed={theme === "dark"}
 								aria-label="Dark mode"
 								onClick={() => setTheme("dark")}
 								className={`flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ${
@@ -409,7 +400,7 @@ export function Navbar(): ReactElement {
 							>
 								<Moon className="h-4 w-4" aria-hidden="true" />
 							</button>
-						</div>
+						</fieldset>
 					</div>
 				</div>
 			</aside>

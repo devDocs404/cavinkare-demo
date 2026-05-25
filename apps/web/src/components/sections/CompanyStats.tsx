@@ -16,7 +16,8 @@ import csr from "../../assets/csr.svg";
 import herbal from "../../assets/herbal.svg";
 
 export function CompanyStats(): ReactElement {
-	const imgHoverClass = "w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]";
+	const imgHoverClass =
+		"w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]";
 
 	return (
 		<section
@@ -30,7 +31,11 @@ export function CompanyStats(): ReactElement {
 					<div className="col-span-1 flex flex-col gap-4 md:gap-6">
 						{/* 91% Consumer Satisfaction */}
 						<StatCard>
-							<img src={consumerScore} alt="Consumer Score" className={imgHoverClass} />
+							<img
+								src={consumerScore}
+								alt="Consumer Score"
+								className={imgHoverClass}
+							/>
 						</StatCard>
 
 						{/* 1.5M+ Retail Touchpoints */}
@@ -55,7 +60,11 @@ export function CompanyStats(): ReactElement {
 
 						{/* 30+ Years of Innovation */}
 						<FadeInStaggerItem className="group relative overflow-hidden rounded-2xl shadow-sm transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-white/5">
-							<img src={thirtyYears} alt="Thirty Years" className={imgHoverClass} />
+							<img
+								src={thirtyYears}
+								alt="Thirty Years"
+								className={imgHoverClass}
+							/>
 						</FadeInStaggerItem>
 
 						{/* 1.2M+ Lives Impacted */}
@@ -68,7 +77,11 @@ export function CompanyStats(): ReactElement {
 					<div className="col-span-1 flex flex-col gap-4 md:gap-6">
 						{/* 44% Sustainable Packaging Rate */}
 						<StatCard>
-							<img src={sustainable} alt="Sustainable" className={imgHoverClass} />
+							<img
+								src={sustainable}
+								alt="Sustainable"
+								className={imgHoverClass}
+							/>
 						</StatCard>
 
 						{/* 62% Of products */}

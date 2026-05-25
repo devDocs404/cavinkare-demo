@@ -59,7 +59,10 @@ export function Hero(): ReactElement {
 							</svg>
 						</div>
 
-						<h1 id="hero-heading" className="relative z-10 text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-white">
+						<h1
+							id="hero-heading"
+							className="relative z-10 text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-white"
+						>
 							A house of <span className="text-gradient-brand">everyday</span>
 							<br />
 							innovations that{" "}
@@ -69,8 +72,14 @@ export function Hero(): ReactElement {
 				</FadeIn>
 
 				{/* GALLERY — decorative visual flair */}
-				<FadeIn delay={0.3} className="relative mt-2 flex h-[360px] w-full items-center justify-center perspective-[2400px] md:h-[420px]">
-					<div aria-hidden="true" className="relative flex h-full w-full items-center justify-center">
+				<FadeIn
+					delay={0.3}
+					className="relative mt-2 flex h-[360px] w-full items-center justify-center perspective-[2400px] md:h-[420px]"
+				>
+					<div
+						aria-hidden="true"
+						className="relative flex h-full w-full items-center justify-center"
+					>
 						{cards.map((card, index) => {
 							const center = (cards.length - 1) / 2;
 							const offset = index - center;

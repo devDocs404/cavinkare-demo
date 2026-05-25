@@ -57,7 +57,9 @@ export function ImageSlider3D({
 
 	return (
 		<>
-			<span className="sr-only">Rotating 3D showcase of CavinKare brand logos</span>
+			<span className="sr-only">
+				Rotating 3D showcase of CavinKare brand logos
+			</span>
 			<div
 				aria-hidden="true"
 				className={`grid h-full min-h-[500px] w-full place-items-center overflow-hidden ${containerClassName}`}

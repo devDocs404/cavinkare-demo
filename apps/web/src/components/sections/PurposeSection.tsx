@@ -3,7 +3,10 @@ import { useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Keyboard, Mousewheel, Pagination } from "swiper/modules";
 import { FadeIn } from "../ui/motion/FadeIn";
-import { FadeInStaggerContainer, FadeInStaggerItem } from "../ui/motion/FadeInStagger";
+import {
+	FadeInStaggerContainer,
+	FadeInStaggerItem,
+} from "../ui/motion/FadeInStagger";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -36,15 +39,20 @@ export function PurposeSection(): ReactElement {
 							</span>
 							<br />
 							<span>
-								driving meaningful change across communities. Our care goes beyond
-								commerce — it shapes a better tomorrow.
+								driving meaningful change across communities. Our care goes
+								beyond commerce — it shapes a better tomorrow.
 							</span>
 						</p>
 					</FadeInStaggerItem>
 				</FadeInStaggerContainer>
 			</div>
 
-			<FadeIn delay={0.4} className="relative w-full px-0 pb-16" aria-roledescription="carousel" aria-label="Company purpose initiatives">
+			<FadeIn
+				delay={0.4}
+				className="relative w-full px-0 pb-16"
+				aria-roledescription="carousel"
+				aria-label="Company purpose initiatives"
+			>
 				<Swiper
 					grabCursor={true}
 					centeredSlides={true}
@@ -119,7 +127,10 @@ export function PurposeSection(): ReactElement {
 					<div className="flex items-center justify-between gap-4">
 						<div
 							role="progressbar"
-							aria-valuenow={Math.round((activeIndex / (PURPOSE_SLIDES.length - 1)) * 100) || 0}
+							aria-valuenow={
+								Math.round((activeIndex / (PURPOSE_SLIDES.length - 1)) * 100) ||
+								0
+							}
 							aria-valuemin={0}
 							aria-valuemax={100}
 							aria-label="Carousel progress"

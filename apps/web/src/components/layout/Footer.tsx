@@ -45,7 +45,12 @@ export function Footer(): ReactElement {
 							</p>
 
 							{/* SOCIALS */}
-							<div className="mt-10 flex items-center gap-5" role="list" aria-label="Social media links">
+							{/** biome-ignore lint/a11y/useSemanticElements: <explanation> */}
+							<div
+								className="mt-10 flex items-center gap-5"
+								role="list"
+								aria-label="Social media links"
+							>
 								{SOCIAL_LINKS.map((item) => (
 									<a
 										key={item.label}
@@ -61,7 +66,10 @@ export function Footer(): ReactElement {
 					</div>
 
 					{/* RIGHT GRID */}
-					<nav aria-label="Footer navigation" className="grid gap-y-16 pl-10 sm:grid-cols-2 lg:grid-cols-4">
+					<nav
+						aria-label="Footer navigation"
+						className="grid gap-y-16 pl-10 sm:grid-cols-2 lg:grid-cols-4"
+					>
 						{FOOTER_LINKS.map((section, index) => (
 							<div
 								key={section.title || `section-${index}`}
