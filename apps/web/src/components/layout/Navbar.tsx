@@ -254,13 +254,13 @@ export function Navbar(): ReactElement {
 			<div
 				role="region"
 				aria-label={activeMegaMenu ? `${activeMegaMenu} menu` : undefined}
-				className={`absolute left-0 right-0 top-full z-40 border-b border-gray-100 bg-white/95 shadow-xl backdrop-blur-xl transition-all duration-300 dark:border-slate-800 dark:bg-slate-950/95 ${
+				className={`absolute left-0 right-0 top-full z-40 flex justify-center px-4 pt-2 transition-all duration-300 md:px-6 lg:px-8 ${
 					activeMegaMenu
-						? "visible translate-y-0 opacity-100"
-						: "invisible -translate-y-2 opacity-0"
+						? "visible translate-y-0 opacity-100 pointer-events-auto"
+						: "invisible -translate-y-2 opacity-0 pointer-events-none"
 				}`}
 			>
-				<div className="mx-auto max-w-7xl">
+				<div className="w-full max-w-7xl overflow-hidden rounded-2xl border border-gray-100 bg-white/95 shadow-2xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/95">
 					{activeMegaMenu === "Organisation" && <OrganisationMenu />}
 					{activeMegaMenu === "Products" && <ProductsMenu />}
 					{activeMegaMenu === "Cavin Cares" && <CavinCaresMenu />}
