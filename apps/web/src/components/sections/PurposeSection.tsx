@@ -2,6 +2,8 @@ import type { ReactElement } from "react";
 import { useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Keyboard, Mousewheel, Pagination } from "swiper/modules";
+import { FadeIn } from "../ui/motion/FadeIn";
+import { FadeInStaggerContainer, FadeInStaggerItem } from "../ui/motion/FadeInStagger";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -17,28 +19,32 @@ export function PurposeSection(): ReactElement {
 	return (
 		<section className="overflow-hidden bg-white py-20 dark:bg-slate-950">
 			<div className="mx-auto mb-12 max-w-4xl px-4 text-center">
-				<div className="max-w-5xl text-center">
-					<h2 className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-white">
-						Cavin Cares: <span className="text-gradient-brand">Purpose</span>
-						<br />
-						Beyond <span className="text-gradient-brand">Products</span>
-					</h2>
+				<FadeInStaggerContainer className="max-w-5xl text-center">
+					<FadeInStaggerItem>
+						<h2 className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-white">
+							Cavin Cares: <span className="text-gradient-brand">Purpose</span>
+							<br />
+							Beyond <span className="text-gradient-brand">Products</span>
+						</h2>
+					</FadeInStaggerItem>
 					{/* SUBTITLE */}
-					<p className="mx-auto mt-10 max-w-full px-4 text-center text-xs leading-relaxed font-semibold text-gray-500 sm:text-sm sm:whitespace-nowrap md:text-base lg:text-lg dark:text-gray-400">
-						<span>
-							From empowering achievers with disabilities to championing
-							sustainability and education, CavinKare is committed to{" "}
-						</span>
-						<br />
-						<span>
-							driving meaningful change across communities. Our care goes beyond
-							commerce — it shapes a better tomorrow.
-						</span>
-					</p>
-				</div>
+					<FadeInStaggerItem>
+						<p className="mx-auto mt-10 max-w-full px-4 text-center text-xs leading-relaxed font-semibold text-gray-500 sm:text-sm sm:whitespace-nowrap md:text-base lg:text-lg dark:text-gray-400">
+							<span>
+								From empowering achievers with disabilities to championing
+								sustainability and education, CavinKare is committed to{" "}
+							</span>
+							<br />
+							<span>
+								driving meaningful change across communities. Our care goes beyond
+								commerce — it shapes a better tomorrow.
+							</span>
+						</p>
+					</FadeInStaggerItem>
+				</FadeInStaggerContainer>
 			</div>
 
-			<div className="relative w-full px-0 pb-16" aria-roledescription="carousel" aria-label="Company purpose initiatives">
+			<FadeIn delay={0.4} className="relative w-full px-0 pb-16" aria-roledescription="carousel" aria-label="Company purpose initiatives">
 				<Swiper
 					grabCursor={true}
 					centeredSlides={true}
@@ -146,7 +152,7 @@ export function PurposeSection(): ReactElement {
 						</div>
 					</div>
 				</div>
-			</div>
+			</FadeIn>
 		</section>
 	);
 }

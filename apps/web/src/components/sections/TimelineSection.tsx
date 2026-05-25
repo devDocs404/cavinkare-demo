@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import type { ReactElement } from "react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { MapPin } from "lucide-react";
+import { FadeIn } from "../ui/motion/FadeIn";
 
 const timelineData = [
 	{
@@ -128,7 +129,7 @@ export function TimelineSection(): ReactElement {
 		>
 			<div className="container mx-auto px-4 max-w-6xl">
 				{/* Heading Section */}
-				<div className="text-center max-w-4xl mx-auto mb-20 space-y-4">
+				<FadeIn className="text-center max-w-4xl mx-auto mb-20 space-y-4">
 					<h2
 						id="timeline-heading"
 						className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark tracking-tight"
@@ -142,111 +143,115 @@ export function TimelineSection(): ReactElement {
 						A story of bold thinking, inclusive innovation, and how a drop of
 						shampoo changed the Indian market forever.
 					</p>
-				</div>
+				</FadeIn>
 
 				{/* Timeline Navigation — ARIA Tabs Pattern */}
-				<div
-					ref={tabListRef}
-					role="tablist"
-					aria-label="Company timeline"
-					onKeyDown={handleTabKeyDown}
-					className="relative mb-16 flex justify-between items-center max-w-4xl mx-auto px-4"
-				>
-					{/* Background Line */}
+				<FadeIn delay={0.2}>
 					<div
-						aria-hidden="true"
-						className="absolute top-1/2 left-0 right-0 h-[2px] bg-gray-100 -z-10"
-					/>
+						ref={tabListRef}
+						role="tablist"
+						aria-label="Company timeline"
+						onKeyDown={handleTabKeyDown}
+						className="relative mb-16 flex justify-between items-center max-w-4xl mx-auto px-4"
+					>
+						{/* Background Line */}
+						<div
+							aria-hidden="true"
+							className="absolute top-1/2 left-0 right-0 h-[2px] bg-gray-100 -z-10"
+						/>
 
-					{timelineData.map((item) => {
-						const isActive = activeTab === item.id;
-						return (
-							<button
-								key={item.id}
-								role="tab"
-								id={`timeline-tab-${item.id}`}
-								aria-selected={isActive}
-								aria-controls={`timeline-panel-${item.id}`}
-								tabIndex={isActive ? 0 : -1}
-								onClick={() => goToTab(item.id)}
-								type="button"
-								className={`relative px-4 py-2 text-4xl md:text-6xl font-light transition-all duration-300 bg-white ${
-									isActive
-										? "text-[#002B5B]"
-										: "text-gray-300 hover:text-gray-400"
-								}`}
-							>
-								{item.year}
-							</button>
-						);
-					})}
-				</div>
+						{timelineData.map((item) => {
+							const isActive = activeTab === item.id;
+							return (
+								<button
+									key={item.id}
+									role="tab"
+									id={`timeline-tab-${item.id}`}
+									aria-selected={isActive}
+									aria-controls={`timeline-panel-${item.id}`}
+									tabIndex={isActive ? 0 : -1}
+									onClick={() => goToTab(item.id)}
+									type="button"
+									className={`relative px-4 py-2 text-4xl md:text-6xl font-light transition-all duration-300 bg-white ${
+										isActive
+											? "text-[#002B5B]"
+											: "text-gray-300 hover:text-gray-400"
+									}`}
+								>
+									{item.year}
+								</button>
+							);
+						})}
+					</div>
+				</FadeIn>
 
 				{/* Timeline Content — Tab Panel */}
-				<div
-					id={`timeline-panel-${activeItem.id}`}
-					role="tabpanel"
-					aria-labelledby={`timeline-tab-${activeItem.id}`}
-					className="max-w-4xl mx-auto"
-				>
-					<AnimatePresence mode="wait">
-						<motion.div
-							key={activeItem.id}
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -20 }}
-							transition={{ duration: 0.4, ease: "easeInOut" }}
-							className="grid md:grid-cols-2 gap-8 md:gap-16 items-center"
-						>
-							{/* Image Side */}
-							<div className="relative aspect-square md:aspect-4/3 rounded-3xl overflow-hidden">
-								<img
-									src={activeItem.image}
-									alt={activeItem.title}
-									className="w-full h-full object-cover"
-								/>
-							</div>
-
-							{/* Content Side */}
-							<div className="space-y-6 relative flex flex-col h-full justify-center">
-								<div className="flex flex-col h-full">
-									{/* Pin and Year */}
-									<div className="flex items-center gap-2 text-gray-900 relative">
-										<MapPin
-											aria-hidden="true"
-											className="w-5 h-5 fill-red-500 text-white"
-										/>
-										<span className="text-xl font-medium">
-											{activeItem.year}
-										</span>
-									</div>
-
-									{/* Vertical Dotted Line */}
-									<div
-										aria-hidden="true"
-										className="ml-[9px] w-px h-12 my-2 border-l-2 border-dotted border-gray-300"
+				<FadeIn delay={0.4}>
+					<div
+						id={`timeline-panel-${activeItem.id}`}
+						role="tabpanel"
+						aria-labelledby={`timeline-tab-${activeItem.id}`}
+						className="max-w-4xl mx-auto"
+					>
+						<AnimatePresence mode="wait">
+							<motion.div
+								key={activeItem.id}
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								exit={{ opacity: 0, y: -20 }}
+								transition={{ duration: 0.4, ease: "easeInOut" }}
+								className="grid md:grid-cols-2 gap-8 md:gap-16 items-center"
+							>
+								{/* Image Side */}
+								<div className="relative aspect-square md:aspect-4/3 rounded-3xl overflow-hidden">
+									<img
+										src={activeItem.image}
+										alt={activeItem.title}
+										className="w-full h-full object-cover"
 									/>
+								</div>
 
-									{/* Main Content */}
-									<div className="space-y-4">
-										<h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#002B5B] leading-tight max-w-lg">
-											{activeItem.title}
-										</h3>
+								{/* Content Side */}
+								<div className="space-y-6 relative flex flex-col h-full justify-center">
+									<div className="flex flex-col h-full">
+										{/* Pin and Year */}
+										<div className="flex items-center gap-2 text-gray-900 relative">
+											<MapPin
+												aria-hidden="true"
+												className="w-5 h-5 fill-red-500 text-white"
+											/>
+											<span className="text-xl font-medium">
+												{activeItem.year}
+											</span>
+										</div>
 
-										<div className="space-y-2 mt-4">
-											<p className="text-gray-500 text-lg md:text-xl">
-												{activeItem.quote}
-											</p>
-											<p className="font-bold text-[#002B5B] text-lg italic">
-												{activeItem.stats}
-											</p>
+										{/* Vertical Dotted Line */}
+										<div
+											aria-hidden="true"
+											className="ml-[9px] w-px h-12 my-2 border-l-2 border-dotted border-gray-300"
+										/>
+
+										{/* Main Content */}
+										<div className="space-y-4">
+											<h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#002B5B] leading-tight max-w-lg">
+												{activeItem.title}
+											</h3>
+
+											<div className="space-y-2 mt-4">
+												<p className="text-gray-500 text-lg md:text-xl">
+													{activeItem.quote}
+												</p>
+												<p className="font-bold text-[#002B5B] text-lg italic">
+													{activeItem.stats}
+												</p>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</motion.div>
-					</AnimatePresence>
-				</div>
+							</motion.div>
+						</AnimatePresence>
+					</div>
+				</FadeIn>
 			</div>
 		</section>
 	);

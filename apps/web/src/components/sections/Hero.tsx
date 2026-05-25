@@ -4,6 +4,7 @@ import img2 from "../../assets/scientists_lab_1779452974081.png";
 import img1 from "../../assets/skincare_model_1779452945535.png";
 import img5 from "../../assets/various_products_1779453032588.png";
 import img4 from "../../assets/yellow_shampoo_1779453014711.png";
+import { FadeIn } from "../ui/motion/FadeIn";
 
 const cards = [
 	{ id: "hero-1", img: img1, alt: "Skincare product model" },
@@ -28,7 +29,7 @@ export function Hero(): ReactElement {
 			{/* CONTENT */}
 			<div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-center">
 				{/* HEADING */}
-				<div className="max-w-5xl text-center">
+				<FadeIn delay={0.1} className="max-w-5xl text-center">
 					<div className="relative inline-block text-center">
 						{/* Hand-drawn Arrow */}
 						<div className="pointer-events-none absolute -bottom-16 -left-12 hidden md:block lg:-bottom-24 lg:-left-24 xl:-bottom-32 xl:-left-32">
@@ -65,86 +66,92 @@ export function Hero(): ReactElement {
 							<span className="text-gradient-brand">care.</span>
 						</h1>
 					</div>
-				</div>
+				</FadeIn>
 
 				{/* GALLERY — decorative visual flair */}
-				<div aria-hidden="true" className="relative mt-2 flex h-[360px] w-full items-center justify-center perspective-[2400px] md:h-[420px]">
-					{cards.map((card, index) => {
-						const center = (cards.length - 1) / 2;
-						const offset = index - center;
+				<FadeIn delay={0.3} className="relative mt-2 flex h-[360px] w-full items-center justify-center perspective-[2400px] md:h-[420px]">
+					<div aria-hidden="true" className="relative flex h-full w-full items-center justify-center">
+						{cards.map((card, index) => {
+							const center = (cards.length - 1) / 2;
+							const offset = index - center;
 
-						return (
-							<div
-								key={card.id}
-								className="group absolute transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform hover:z-50"
-								style={{
-									transform: `
-                    translateX(${offset * 145}px)
-                    translateY(${Math.abs(offset) * 10}px)
-                    rotate(${offset * 6}deg)
-                    scale(${1 - Math.abs(offset) * 0.03})
-                  `,
-									zIndex: 30 - Math.abs(offset),
-								}}
-							>
-								<div className="overflow-hidden rounded-[30px] shadow-[0_20px_70px_rgba(0,0,0,0.18)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-8 group-hover:scale-[1.15] group-hover:shadow-[0_30px_90px_rgba(0,0,0,0.25)]">
-									<img
-										src={card.img}
-										alt={card.alt}
-										loading="lazy"
-										draggable={false}
-										className="h-[220px] w-[150px] object-cover select-none sm:h-[260px] sm:w-[180px] md:h-[320px] md:w-[220px]"
-									/>
+							return (
+								<div
+									key={card.id}
+									className="group absolute transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform hover:z-50"
+									style={{
+										transform: `
+											translateX(${offset * 145}px)
+											translateY(${Math.abs(offset) * 10}px)
+											rotate(${offset * 6}deg)
+											scale(${1 - Math.abs(offset) * 0.03})
+										`,
+										zIndex: 30 - Math.abs(offset),
+									}}
+								>
+									<div className="overflow-hidden rounded-[30px] shadow-[0_20px_70px_rgba(0,0,0,0.18)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-8 group-hover:scale-[1.15] group-hover:shadow-[0_30px_90px_rgba(0,0,0,0.25)]">
+										<img
+											src={card.img}
+											alt={card.alt}
+											loading="lazy"
+											draggable={false}
+											className="h-[220px] w-[150px] object-cover select-none sm:h-[260px] sm:w-[180px] md:h-[320px] md:w-[220px]"
+										/>
+									</div>
 								</div>
-							</div>
-						);
-					})}
-				</div>
+							);
+						})}
+					</div>
+				</FadeIn>
 
 				{/* SUBTITLE */}
-				<p className="mx-auto mt-10 max-w-full px-4 text-center text-xs leading-relaxed font-semibold text-gray-500 sm:text-sm sm:whitespace-nowrap md:text-base lg:text-lg">
-					From personal care to beverages and salons, our brands redefine how
-					India <br />
-					<span> lives, eats, and feels every day.</span>
-				</p>
+				<FadeIn delay={0.5}>
+					<p className="mx-auto mt-10 max-w-full px-4 text-center text-xs leading-relaxed font-semibold text-gray-500 sm:text-sm sm:whitespace-nowrap md:text-base lg:text-lg">
+						From personal care to beverages and salons, our brands redefine how
+						India <br />
+						<span> lives, eats, and feels every day.</span>
+					</p>
+				</FadeIn>
 
 				{/* BUTTONS */}
-				<div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
-					{/* LEFT BUTTON */}
-					<button
-						type="button"
-						className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-px font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(9,65,164,0.3)]"
-					>
-						{/* Outer border glow/gradient */}
-						<span className="absolute inset-0 bg-linear-to-r from-blue-300 via-blue-500 to-blue-300 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
+				<FadeIn delay={0.6}>
+					<div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
+						{/* LEFT BUTTON */}
+						<button
+							type="button"
+							className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-px font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(9,65,164,0.3)]"
+						>
+							{/* Outer border glow/gradient */}
+							<span className="absolute inset-0 bg-linear-to-r from-blue-300 via-blue-500 to-blue-300 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
 
-						{/* Button Interior */}
-						<div className="relative inline-flex h-full w-full items-center justify-center rounded-full bg-linear-to-b from-[#1a2845] to-[#0941a4] px-8 py-3">
-							{/* Soft inner top highlight for 3D glass effect */}
-							<div className="absolute inset-0 rounded-full border border-white/10" />
-							<div className="absolute inset-0 rounded-full border-t border-white/30 mix-blend-overlay" />
-							<span className="relative z-10 text-white drop-shadow-md">
-								Explore Our Brands
-							</span>
-						</div>
-					</button>
+							{/* Button Interior */}
+							<div className="relative inline-flex h-full w-full items-center justify-center rounded-full bg-linear-to-b from-[#1a2845] to-[#0941a4] px-8 py-3">
+								{/* Soft inner top highlight for 3D glass effect */}
+								<div className="absolute inset-0 rounded-full border border-white/10" />
+								<div className="absolute inset-0 rounded-full border-t border-white/30 mix-blend-overlay" />
+								<span className="relative z-10 text-white drop-shadow-md">
+									Explore Our Brands
+								</span>
+							</div>
+						</button>
 
-					{/* RIGHT BUTTON */}
-					<button
-						type="button"
-						className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-[2px] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_25px_rgba(9,65,164,0.15)]"
-					>
-						{/* Animated Gradient Border */}
-						<span className="absolute inset-0 bg-linear-to-r from-[#1a2845] via-blue-400 to-[#1a2845] opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
+						{/* RIGHT BUTTON */}
+						<button
+							type="button"
+							className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-[2px] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_25px_rgba(9,65,164,0.15)]"
+						>
+							{/* Animated Gradient Border */}
+							<span className="absolute inset-0 bg-linear-to-r from-[#1a2845] via-blue-400 to-[#1a2845] opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
 
-						{/* Button Interior */}
-						<div className="relative flex h-full w-full items-center justify-center rounded-full bg-white px-8 py-3 dark:bg-slate-950">
-							<span className="bg-linear-to-r from-[#1a2845] to-[#0941a4] bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent transition-all duration-300 group-hover:from-blue-600 group-hover:to-blue-400 dark:from-blue-400 dark:to-blue-300">
-								Our Impact Story
-							</span>
-						</div>
-					</button>
-				</div>
+							{/* Button Interior */}
+							<div className="relative flex h-full w-full items-center justify-center rounded-full bg-white px-8 py-3 dark:bg-slate-950">
+								<span className="bg-linear-to-r from-[#1a2845] to-[#0941a4] bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent transition-all duration-300 group-hover:from-blue-600 group-hover:to-blue-400 dark:from-blue-400 dark:to-blue-300">
+									Our Impact Story
+								</span>
+							</div>
+						</button>
+					</div>
+				</FadeIn>
 			</div>
 		</section>
 	);

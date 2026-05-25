@@ -2,6 +2,8 @@ import { Headphones, Mail, MapPin, Phone } from "lucide-react";
 import type { ReactElement, ReactNode } from "react";
 import type { ContactCardIcon } from "../../data/contact";
 import { CONTACT_CARDS } from "../../data/contact";
+import { FadeIn } from "../ui/motion/FadeIn";
+import { FadeInStaggerContainer, FadeInStaggerItem } from "../ui/motion/FadeInStagger";
 
 const ICON_MAP: Record<ContactCardIcon, ReactNode> = {
 	mail: <Mail size={18} />,
@@ -19,7 +21,7 @@ export function Contact(): ReactElement {
 		>
 			<div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-1 lg:items-start">
 				{/* HEADING */}
-				<div>
+				<FadeIn>
 					<h2 id="contact-heading" className="text-5xl font-bold tracking-[-0.04em] text-brand-dark dark:text-white">
 						Chat to our friendly team
 					</h2>
@@ -28,14 +30,14 @@ export function Contact(): ReactElement {
 						We&apos;d love to hear from you. Please fill out this form or shoot
 						us an email.
 					</p>
-				</div>
+				</FadeIn>
 				<div className="flex flex-col justify-between xl:flex-row gap-2">
 					{/* LEFT SIDE */}
 					<div className="w-full md:w-1/2">
 						{/* CONTACT CARDS */}
-						<div className="grid gap-5 sm:grid-cols-2">
+						<FadeInStaggerContainer className="grid gap-5 sm:grid-cols-2">
 							{CONTACT_CARDS.map((item) => (
-								<div
+								<FadeInStaggerItem
 									key={item.title}
 									className="rounded-[24px] border border-neutral-100 bg-white p-7 shadow-[0_10px_40px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_50px_rgba(0,0,0,0.06)] dark:border-slate-800 dark:bg-slate-900 dark:hover:shadow-[0_15px_50px_rgba(0,0,0,0.3)]"
 								>
@@ -61,13 +63,13 @@ export function Contact(): ReactElement {
 									>
 										<span className="text-gradient-brand">{item.link}</span>
 									</a>
-								</div>
+								</FadeInStaggerItem>
 							))}
-						</div>
+						</FadeInStaggerContainer>
 					</div>
 
 					{/* RIGHT SIDE */}
-					<div className="rounded-xl border border-neutral-100 bg-[#f6f8fb] p-7 shadow-[0_20px_60px_rgba(0,0,0,0.04)] dark:border-slate-800 dark:bg-slate-900/50">
+					<FadeIn delay={0.4} className="rounded-xl border border-neutral-100 bg-[#f6f8fb] p-7 shadow-[0_20px_60px_rgba(0,0,0,0.04)] dark:border-slate-800 dark:bg-slate-900/50">
 						<form aria-label="Contact form" className="space-y-5">
 							{/* NAME */}
 							<div className="grid gap-4 sm:grid-cols-2">
@@ -171,7 +173,7 @@ export function Contact(): ReactElement {
 								Send Message
 							</button>
 						</form>
-					</div>
+					</FadeIn>
 				</div>
 			</div>
 		</section>

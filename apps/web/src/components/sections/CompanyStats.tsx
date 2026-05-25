@@ -4,6 +4,8 @@ import { DocumentIcon } from "../../../../../packages/ui/src/components/icons/Do
 import { LeafIcon } from "../../../../../packages/ui/src/components/icons/LeafIcon";
 import { StatCard } from "./stats/StatCard";
 
+import { FadeInStaggerContainer, FadeInStaggerItem } from "../ui/motion/FadeInStagger";
+
 export function CompanyStats(): ReactElement {
 	return (
 		<section
@@ -12,7 +14,7 @@ export function CompanyStats(): ReactElement {
 			className="relative w-full overflow-hidden bg-white px-6 py-24 md:px-12 dark:bg-slate-950"
 		>
 			<div className="mx-auto max-w-7xl">
-				<div className="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6">
+				<FadeInStaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6">
 					{/* Column 1 */}
 					<div className="col-span-1 flex flex-col gap-4 md:gap-6">
 						{/* 91% Consumer Satisfaction */}
@@ -111,7 +113,7 @@ export function CompanyStats(): ReactElement {
 						</div>
 
 						{/* 30+ Years of Innovation */}
-						<div className="group relative flex min-h-[220px] flex-col items-center justify-center overflow-hidden rounded-3xl bg-linear-to-br from-brand-red to-brand-red-deep p-10 text-white shadow-lg transition-shadow hover:shadow-md md:min-h-[260px] dark:from-red-900 dark:to-red-950">
+						<FadeInStaggerItem className="group relative flex min-h-[220px] flex-col items-center justify-center overflow-hidden rounded-3xl bg-linear-to-br from-brand-red to-brand-red-deep p-10 text-white shadow-lg transition-shadow hover:shadow-md md:min-h-[260px] dark:from-red-900 dark:to-red-950">
 							<div className="pointer-events-none absolute inset-0">
 								<div className="absolute top-[20%] left-[20%] h-2 w-2 animate-pulse rounded-full bg-white opacity-60 blur-[1px]"></div>
 								<div className="absolute top-[30%] right-[25%] h-3 w-3 animate-pulse rounded-full bg-white opacity-40 blur-[2px] delay-75"></div>
@@ -125,7 +127,7 @@ export function CompanyStats(): ReactElement {
 							<p className="relative z-10 mt-4 text-sm font-semibold tracking-[0.25em] text-white/90 uppercase">
 								Years of Innovation
 							</p>
-						</div>
+						</FadeInStaggerItem>
 
 						{/* 1.2M+ Lives Impacted */}
 						<StatCard className="flex-row! items-center! p-8! sm:min-h-[120px]">
@@ -201,7 +203,7 @@ export function CompanyStats(): ReactElement {
 							</p>
 						</StatCard>
 					</div>
-				</div>
+				</FadeInStaggerContainer>
 			</div>
 		</section>
 	);

@@ -1,6 +1,8 @@
 import type { ReactElement } from "react";
 import type { NewsItem } from "../../data/news";
 import { NEWS_ITEMS } from "../../data/news";
+import { FadeIn } from "../ui/motion/FadeIn";
+import { FadeInStaggerContainer, FadeInStaggerItem } from "../ui/motion/FadeInStagger";
 
 function NewsCard({ item }: { item: NewsItem }): ReactElement {
 	const innerContent = (
@@ -31,22 +33,22 @@ function NewsCard({ item }: { item: NewsItem }): ReactElement {
 
 	if (item.isOverlap) {
 		return (
-			<div className={`relative z-10 ${item.containerClass}`}>
+			<FadeInStaggerItem className={`relative z-10 ${item.containerClass}`}>
 				<div className="absolute top-0 right-0 bottom-0 left-0 -z-10 rounded-tl-[2rem] bg-surface-section md:-top-3 md:-left-4 md:rounded-tl-[3rem] dark:bg-slate-900" />
 
 				<div className="group relative h-full w-full overflow-hidden rounded-[2rem] shadow-lg">
 					{innerContent}
 				</div>
-			</div>
+			</FadeInStaggerItem>
 		);
 	}
 
 	return (
-		<div
+		<FadeInStaggerItem
 			className={`group relative overflow-hidden rounded-[2rem] shadow-lg ${item.containerClass}`}
 		>
 			{innerContent}
-		</div>
+		</FadeInStaggerItem>
 	);
 }
 
@@ -92,7 +94,7 @@ export function InsideCavinKare(): ReactElement {
 			<section aria-labelledby="inside-cavinkare-heading" className="relative w-full bg-surface-section px-6 py-24 md:px-12 dark:bg-slate-900">
 				<div className="relative z-10 mx-auto max-w-7xl">
 					{/* HEADER */}
-					<div className="mx-auto mb-8 max-w-4xl text-center md:mb-10">
+					<FadeIn className="mx-auto mb-8 max-w-4xl text-center md:mb-10">
 						<h2 id="inside-cavinkare-heading" className="text-4xl leading-[0.95] font-bold tracking-[-0.05em] text-brand-dark sm:text-5xl md:text-6xl lg:text-7xl dark:text-white">
 							Inside <span className="text-gradient-brand">CavinKare</span>
 						</h2>
@@ -101,14 +103,14 @@ export function InsideCavinKare(): ReactElement {
 							Stay updated with our latest news, innovations, and stories that
 							shape our journey
 						</p>
-					</div>
+					</FadeIn>
 
 					{/* GRID */}
-					<div className="grid w-full grid-cols-1 gap-4 md:grid-cols-12 md:gap-5">
+					<FadeInStaggerContainer className="grid w-full grid-cols-1 gap-4 md:grid-cols-12 md:gap-5">
 						{NEWS_ITEMS.map((item) => (
 							<NewsCard key={item.title} item={item} />
 						))}
-					</div>
+					</FadeInStaggerContainer>
 				</div>
 			</section>
 
