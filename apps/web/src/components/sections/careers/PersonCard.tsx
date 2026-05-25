@@ -7,10 +7,8 @@ interface PersonCardProps {
 
 export function PersonCard({ person }: PersonCardProps): ReactElement {
 	return (
-		<div
-			className="group relative h-[420px] w-full cursor-pointer lg:h-[460px] focus-within:ring-2 focus-within:ring-brand-blue focus-within:ring-offset-2 rounded-[40px]"
-			tabIndex={0}
-			role="group"
+		<article
+			className="group relative h-[420px] w-full cursor-pointer lg:h-[460px] rounded-[40px]"
 			aria-label={`${person.name}, ${person.role}`}
 		>
 			{/* Background Image (Revealed on hover) */}
@@ -47,6 +45,6 @@ export function PersonCard({ person }: PersonCardProps): ReactElement {
 
 				<div className="relative z-10 mt-6 h-1 w-12 rounded-full bg-gray-200 transition-colors group-hover:bg-brand-blue dark:bg-slate-700 dark:group-hover:bg-[#3b7bed]" />
 			</div>
-		</div>
+		</article>
 	);
 }

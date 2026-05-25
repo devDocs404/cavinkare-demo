@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
-import { FOOTER_LINKS, SOCIAL_LINKS } from "../../data/footer";
 import brandLogo from "../../assets/brandLogo.svg";
+import { FOOTER_LINKS, SOCIAL_LINKS } from "../../data/footer";
 
 export function Footer(): ReactElement {
 	return (
@@ -45,7 +45,7 @@ export function Footer(): ReactElement {
 							</p>
 
 							{/* SOCIALS */}
-							{/** biome-ignore lint/a11y/useSemanticElements: <explanation> */}
+							{/** biome-ignore lint/a11y/useSemanticElements: using div with role list for styling flexibility */}
 							<div
 								className="mt-10 flex items-center gap-5"
 								role="list"
